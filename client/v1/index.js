@@ -32,9 +32,12 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // I can find on these e-shops
 // 2. Log the variable
 
-
-
-
+var hopaal = 'https://hopaal.com/collections/t-shirts-homme/products/red-barn-t-shirt?variant=37505969750200';
+var loom = 'https://www.loom.fr/products/le-t-shirt';
+var address = 'https://adresse.paris/t-shirts-et-polos/4238-t-shirt-ranelagh-1300000262026.html';
+console.log('Cheapest T-shirt Hopaal: '+hopaal);
+console.log('Cheapest T-shirt Loom: '+loom);
+console.log('Cheapest T-shirt Address: '+address);
 
 /**
  * 👕
@@ -49,11 +52,18 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
 
+var number_products = marketplace.length;
+console.log('Number of products in the marketplace: '+number_products);
 
 // 🎯 TODO: Brands name
 // 1. Create a variable and assign it the list of brands name only
 // 2. Log the variable
 // 3. Log how many brands we have
+
+var brand_list = [];
+marketplace.forEach(element => brand_list.push(element.brand));
+console.log(brand_list);
+console.log('There are ' + brand_list.length + 'brands!');
 
 
 // 🎯 TODO: Sort by price
