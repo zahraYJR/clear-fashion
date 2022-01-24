@@ -16,6 +16,7 @@ const MY_FAVORITE_BRANDS = [{
 
 console.table(MY_FAVORITE_BRANDS);
 console.log(MY_FAVORITE_BRANDS[0]);
+const marketplace=require('C:/Users/lilil/Documents/Lisa/Formation ESILV 2018 2023/A4/S2/Web application architecture/clear-fashion/client/v1/data.js');
 
 
 
@@ -31,8 +32,6 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 1. Create a new variable and assign it the link of the cheapest t-shirt
 // I can find on these e-shops
 // 2. Log the variable
-
-
 
 
 
@@ -55,17 +54,42 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 2. Log the variable
 // 3. Log how many brands we have
 
+//console.log(marketplace);
+let brands=[];
+for (let i=0;i<marketplace.length;i++){
+  brands.push(marketplace[i]['brand'])
+}
+
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
+console.log(brands)
+var unique_brands = brands.filter(onlyUnique);
+console.log(unique_brands.length)
 
 // 🎯 TODO: Sort by price
 // 1. Create a function to sort the marketplace products by price
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 // 3. Log the variable
 
+const sorted_market = marketplace.sort(function(a, b){return a.price - b.price});
+// 2. Create a variable and assign it the list of products by price from lowest to highest
+// 3. Log the variable
+//console.log(sorted_market);
+//for (let i = 0; i < sorted_market.length; i++) {
+  //console.log(sorted_market[i]);
+//}
+
 
 // 🎯 TODO: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
 // 2. Create a variable and assign it the list of products by date from recent to old
 // 3. Log the variable
+//const sorted_market_by_date = marketplace.sort(function(a, b){return new Date(b.date) - new Date(a.date)});
+//for (let i = 0; i < sorted_market_by_date.length; i++) {
+  //console.log(sorted_market_by_date[i]);
+//}
 
 
 // 🎯 TODO: Filter a specific price range
@@ -88,6 +112,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * 🏎
  */
 
+
 // 🎯 TODO: Products by brands
 // 1. Create an object called `brands` to manipulate products by brand name
 // The key is the brand name
@@ -102,7 +127,22 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // };
 //
 // 2. Log the variable
-// 3. Log the number of products by brands
+// 3. Log the number of products by brands$
+
+const brands_bis={}
+for(let i=0;i<unique_brands.length;i++)
+{
+  brands_bis[unique_brands[i]]=[]
+}
+for (let i=0;i<marketplace.length;i++)
+{
+  brands_bis[marketplace[i]['brand']].push(marketplace[i])
+}
+console.log(brands_bis)
+for(let i=0;i<unique_brands.length;i++)
+{
+  console.log(brands_bis[unique_brands[i]].length)
+}
 
 
 // 🎯 TODO: Sort by price for each brand

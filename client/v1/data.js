@@ -1086,4 +1086,5 @@ const marketplace = [
     'name': 'Socks Sigtuna Super Mario Pattern White',
     'date': '2020-08-25'
   }
-];
+];  
+module.exports=marketplace;
