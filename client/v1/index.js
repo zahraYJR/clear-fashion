@@ -33,6 +33,19 @@ const marketplace=require('C:/Users/lilil/Documents/Lisa/Formation ESILV 2018 20
 // I can find on these e-shops
 // 2. Log the variable
 
+let cheapshirt={'url':'','price':10000};
+for(let i=0;i<marketplace.length;i++){
+  MY_FAVORITE_BRANDS.forEach(element=>{
+    if(marketplace[i].brand.toLowerCase()==element.name.toLowerCase()){
+      if(marketplace[i].name.toLowerCase().search("t-shirt")!=-1){
+        if(marketplace[i].price<cheapshirt.price){
+          cheapshirt.url=marketplace[i].link;
+          cheapshirt.price=marketplace[i].price;
+        }
+      }
+  }});
+}
+console.log(cheapshirt.url);
 
 
 /**
@@ -48,6 +61,13 @@ const marketplace=require('C:/Users/lilil/Documents/Lisa/Formation ESILV 2018 20
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
 
+const marketplace=require('./data.js');
+var counter = 0
+console.log(marketplace);
+for (let i = 0; i < marketplace.length; i++) {
+  counter = counter+1;
+}
+console.log(counter)
 
 // 🎯 TODO: Brands name
 // 1. Create a variable and assign it the list of brands name only
@@ -74,35 +94,47 @@ console.log(unique_brands.length)
 // 3. Log the variable
 
 const sorted_market = marketplace.sort(function(a, b){return a.price - b.price});
-// 2. Create a variable and assign it the list of products by price from lowest to highest
-// 3. Log the variable
-//console.log(sorted_market);
-//for (let i = 0; i < sorted_market.length; i++) {
-  //console.log(sorted_market[i]);
-//}
+for (let i = 0; i < sorted_market.length; i++) {
+  console.log(sorted_market[i]);
+}
 
 
 // 🎯 TODO: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
 // 2. Create a variable and assign it the list of products by date from recent to old
 // 3. Log the variable
-//const sorted_market_by_date = marketplace.sort(function(a, b){return new Date(b.date) - new Date(a.date)});
-//for (let i = 0; i < sorted_market_by_date.length; i++) {
-  //console.log(sorted_market_by_date[i]);
-//}
+const sorted_market_by_date = marketplace.sort(function(a, b){return new Date(b.date) - new Date(a.date)});
+for (let i = 0; i < sorted_market_by_date.length; i++) {
+  console.log(sorted_market_by_date[i]);
+}
 
 
 // 🎯 TODO: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
 
+const marketplace2 = []
+for (let i = 0; i < marketplace.length; i++) {
+  if(marketplace[i].price >50 && marketplace[i].price <100){
+    marketplace2.push(marketplace[i]);
+  }
+}console.log(marketplace2);
+const sorted_50_100_market = marketplace2.sort(function(a, b){return a.price - b.price});
+for (let i = 0; i < sorted_50_100_market.length; i++) {
+  console.log(sorted_50_100_market[i]);
+}
 
 // 🎯 TODO: Average price
 // 1. Determine the average price of the marketplace
 // 2. Log the average
 
 
-
+var average=0;
+for(let i=0;i<marketplace.length;i++){
+  average+=marketplace[i].price;
+}
+average/=marketplace.length;
+console.log(average);
 
 
 /**
