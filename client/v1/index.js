@@ -140,11 +140,8 @@ console.log(brands);
 // 🎯 TODO: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
-console.log("debug :");
-console.log(Object.keys(brands));
 for(const brd in Object.keys(brands)) {
-  //brands[brd].sort((a,b) => compare(a.price,b.price));
-  console.log(brd);
+  brands[brands_name[brd]].sort((a,b) => compare(a.price,b.price));
 }
 console.log(brands);
 
@@ -152,7 +149,10 @@ console.log(brands);
 // 🎯 TODO: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
 // 2. Log the sort
-
+for(const brd in Object.keys(brands)) {
+  brands[brands_name[brd]].sort((a,b) => compare(a.date,b.date));
+}
+console.log(brands);
 
 
 
