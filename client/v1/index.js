@@ -86,7 +86,7 @@ function sort_by_date(marketplace)
 	trier_date = marketplace.sort((value1,value2) => (value1.date > value2.date) ? -1 : 1);
 	return trier_date;
 }
-trier_date = sort_by_price(marketplace);
+trier_date = sort_by_date(marketplace);
 console.log(trier_date);
 
 // 🎯 TODO: Filter a specific price range
@@ -137,15 +137,15 @@ console.log('non',brands);
 for (k in brands.keys){
   brands[k] = sort_by_price(brands[k]);
 }
-console.log('ouiii', brands);
+console.log('by price', brands);
 
 // 🎯 TODO: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
 // 2. Log the sort
-
-
-
-
+for (k in brands.keys){
+  brands[k] = sort_by_date(brands[k]);
+}
+console.log('by date', brands);
 
 /**
  * 💶
