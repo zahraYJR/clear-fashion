@@ -109,12 +109,23 @@ console.log(market_date);
 
 // 🎯 TODO: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
+let market_price = marketplace.filter(obj => obj.price>=50 && obj.price<=100)
+market_price.forEach((e)=>{
+  console.log(e.price);
+})
 // 2. Log the list
-
+console.log(market_price);
 
 // 🎯 TODO: Average price
 // 1. Determine the average price of the marketplace
+let prices = marketplace.map(obj => obj.price);
+let avg = 0;
+for(let i=0;i<prices.length;i++){
+  avg += prices[i];
+}
+avg = avg/prices.length;
 // 2. Log the average
+console.log(avg);
 
 
 
@@ -129,6 +140,11 @@ console.log(market_date);
 
 // 🎯 TODO: Products by brands
 // 1. Create an object called `brands` to manipulate products by brand name
+// let brands_names = marketplace.map((obj) => {obj.brand:
+//   [obj.link,obj.price,obj.name,obj.date]});
+
+let arr_red = marketplace.reduce((acc,obj) => ({...acc,[obj.brand]:[obj.name,obj.link,obj.date,obj.price]}),{});
+ // .reduce((acc, cur) => ({ ...acc, [cur.color]: cur.id }), {}
 // The key is the brand name
 // The value is the array of products
 //
@@ -141,6 +157,7 @@ console.log(market_date);
 // };
 //
 // 2. Log the variable
+console.log(arr_red);
 // 3. Log the number of products by brands
 
 
