@@ -145,18 +145,28 @@ console.log('Average price of the marketplace : ',AveragePrice,'euros.');
 //   'brand-name-n': [{...}, {...}, ..., {...}],
 // };
 
-
-const brands 
-
+const brands = {}
+BrandsName.forEach(element => {brands[element] = []});
+marketplace.forEach(element => {brands[element.brand].push(element)});
 
 //
 // 2. Log the variable
+
+console.log(brands);
+
 // 3. Log the number of products by brands
 
+Object.keys(brands).forEach(key => { 
+  console.log(key+' : '+brands[key].length)
+})
 
 // 🎯 TODO: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
+
+
+
 // 2. Log the sort
+
 
 
 // 🎯 TODO: Sort by date for each brand
