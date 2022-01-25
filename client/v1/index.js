@@ -1,6 +1,7 @@
 // Invoking strict mode https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode#invoking_strict_mode
 'use strict';
 
+
 console.log('🚀 This is it.');
 
 const MY_FAVORITE_BRANDS = [{
@@ -32,9 +33,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // I can find on these e-shops
 // 2. Log the variable
 
-
-
-
+const cheap_tshirt = "https://www.loom.fr/products/le-t-shirt";
 
 /**
  * 👕
@@ -45,41 +44,85 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * 👕
  */
 
+ const marketplace = require('./data');
+
 // 🎯 TODO: Number of products
 // 1. Create a variable and assign it the number of products
+
+var NumberOfProducts = marketplace.length;
+
 // 2. Log the variable
 
+console.log('Number of products:', NumberOfProducts)
 
 // 🎯 TODO: Brands name
 // 1. Create a variable and assign it the list of brands name only
+
+var BrandsName = []
+
+marketplace.forEach(element => {BrandsName.push(element.brand)});
+BrandsName = new Set(BrandsName); //We eliminate the duplicates
+
 // 2. Log the variable
+
+console.log(BrandsName)
+
 // 3. Log how many brands we have
 
+console.log(BrandsName.size)
 
 // 🎯 TODO: Sort by price
 // 1. Create a function to sort the marketplace products by price
+
+function SortByPrice(marketplace) 
+{
+	return marketplace.sort((element1,element2) => (element1.price > element2.price) ? 1 : -1);
+}
+
 // 2. Create a variable and assign it the list of products by price from lowest to highest
+
+var MarketplaceSortedByPrice = SortByPrice(marketplace);
+
 // 3. Log the variable
 
+console.log(MarketplaceSortedByPrice);
 
 // 🎯 TODO: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
+
+function SortByDate(marketplace) 
+{
+	return marketplace.sort((element1,element2) => (Date.parse(element1.date) > Date.parse(element2.date)) ? 1 : -1);
+}
+
 // 2. Create a variable and assign it the list of products by date from recent to old
+
+var MarketplaceSortedByDate = SortByDate(marketplace);
+
 // 3. Log the variable
 
+console.log(MarketplaceSortedByDate);
 
 // 🎯 TODO: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
+
+var FilteredMarketplace = []
+marketplace.forEach(element => {if (element.price > 50 &  element.price < 100){FilteredMarketplace.push(element) }} );
+
 // 2. Log the list
 
+console.log(FilteredMarketplace);
 
 // 🎯 TODO: Average price
 // 1. Determine the average price of the marketplace
+
+var Sum = 0;
+marketplace.forEach(element => {Sum = Sum + element.price} );
+var AveragePrice = Sum / marketplace.length;
+
 // 2. Log the average
 
-
-
-
+console.log('Average price of the marketplace : ',AveragePrice,'euros.');
 
 /**
  * 🏎
@@ -100,6 +143,9 @@ console.log(MY_FAVORITE_BRANDS[0]);
 //   ....
 //   'brand-name-n': [{...}, {...}, ..., {...}],
 // };
+
+
+
 //
 // 2. Log the variable
 // 3. Log the number of products by brands
@@ -204,6 +250,7 @@ const COTELE_PARIS = [
 // 🎯 TODO: New released products
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
+
 
 
 // 🎯 TODO: Reasonable price
