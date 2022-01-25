@@ -135,7 +135,8 @@ console.log('Average price of the marketplace : ',AveragePrice,'euros.');
 // 1. Create an object called `brands` to manipulate products by brand name
 // The key is the brand name
 // The value is the array of products
-//
+// 
+
 // Example:
 // const brands = {
 //   'brand-name-1': [{...}, {...}, ..., {...}],
