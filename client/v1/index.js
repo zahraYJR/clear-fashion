@@ -163,19 +163,24 @@ Object.keys(brands).forEach(key => {
 // 🎯 TODO: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 
-
+Object.keys(brands).forEach(key => { 
+    SortByPrice(brands[key])
+})
 
 // 2. Log the sort
 
-
+console.log(brands)
 
 // 🎯 TODO: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
+
+Object.keys(brands).forEach(key => { 
+  SortByDate(brands[key])
+})
+
 // 2. Log the sort
 
-
-
-
+console.log(brands)
 
 /**
  * 💶
@@ -188,9 +193,14 @@ Object.keys(brands).forEach(key => {
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
 
+function math(key)
+{
+  return brands[key][Math.round(brands[key].length*0.1)].price
+}
 
-
-
+Object.keys(brands).forEach(key => { 
+  console.log(key +' (p90) : '+ math(key)+' euros')
+})
 
 /**
  * 🧥
@@ -271,10 +281,14 @@ const COTELE_PARIS = [
 // // A reasonable price if all the products are less than 100€
 
 
+
 // 🎯 TODO: Find a specific product
 // 1. Find the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
 // 2. Log the product
 
+COTELE_PARIS.forEach(element => 
+  {if (element.uuid === 'b56c6d88-749a-5b4c-b571-e5b5c6483131') {console.log(element)
+}})
 
 // 🎯 TODO: Delete a specific product
 // 1. Delete the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
