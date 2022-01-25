@@ -167,7 +167,11 @@ console.log(brands);
 // 🎯 TODO: Compute the p90 price value
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
-
+for(const brd in Object.keys(brands)) {
+  brands[brands_name[brd]].sort((a,b) => compare(a.price,b.price));
+  console.log(brands_name[brd] + " 90th percentile : ")
+  console.log(brands[brands_name[brd]][Math.round(brands[brands_name[brd]].length * 90 /100)].price);
+}
 
 
 
@@ -243,21 +247,35 @@ const COTELE_PARIS = [
 // 🎯 TODO: New released products
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
-
+console.log("List of new products :");
+console.log(COTELE_PARIS.filter(x => Date.now() - Date.parse(x.released) < 2*7*24*60*60*1000  ));
 
 // 🎯 TODO: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
-
+console.log("Is Cotele paris a reasonable shop ? :");
+console.log(COTELE_PARIS.every(x => x.price < 100));
 
 // 🎯 TODO: Find a specific product
 // 1. Find the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
 // 2. Log the product
-
+console.log("Product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131` ");
+console.log(COTELE_PARIS.find(x => x.uuid === "b56c6d88-749a-5b4c-b571-e5b5c6483131"));
 
 // 🎯 TODO: Delete a specific product
 // 1. Delete the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
 // 2. Log the new list of product
+function removeItemOnce(arr, value) {
+  var index = arr.indexOf(value);
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+}
+
+const COTELE_PARIS_new = removeItemOnce(COTELE_PARIS,COTELE_PARIS.find(x => x.uuid === "b56c6d88-749a-5b4c-b571-e5b5c6483131"));
+console.log("List without the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131` ");
+console.log(COTELE_PARIS_new);
 
 // 🎯 TODO: Save the favorite product
 let blueJacket = {
@@ -265,6 +283,7 @@ let blueJacket = {
   'price': 110,
   'uuid': 'b4b05398-fee0-4b31-90fe-a794d2ccfaaa'
 };
+COTELE_PARIS_new.push(blueJacket);
 
 // we make a copy of blueJacket to jacket
 // and set a new property `favorite` to true
@@ -274,7 +293,9 @@ jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
 // 2. What do you notice?
-
+console.log("Copy with rewritting of original");
+console.log(blueJacket);
+console.log(jacket);
 blueJacket = {
   'link': 'https://coteleparis.com/collections/tous-les-produits-cotele/products/la-veste-bleu-roi',
   'price': 110,
@@ -282,8 +303,11 @@ blueJacket = {
 };
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
-
-
+jacket = JSON.parse(JSON.stringify(blueJacket));
+jacket.favorite = true;
+console.log("Copy without rewritting of original");
+console.log(blueJacket);
+console.log(jacket);
 
 
 
@@ -296,3 +320,5 @@ blueJacket = {
 // 🎯 TODO: Save in localStorage
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
+localStorage.setItem("MY_FAVORITE_BRANDS",MY_FAVORITE_BRANDS);
+console.log(localStorage);
