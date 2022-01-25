@@ -16,8 +16,8 @@ const MY_FAVORITE_BRANDS = [{
 
 console.table(MY_FAVORITE_BRANDS);
 console.log(MY_FAVORITE_BRANDS[0]);
-const marketplace=require('C:/Users/lilil/Documents/Lisa/Formation ESILV 2018 2023/A4/S2/Web application architecture/clear-fashion/client/v1/data.js');
-
+//const marketplace=require('C:/Users/lilil/Documents/Lisa/Formation ESILV 2018 2023/A4/S2/Web application architecture/clear-fashion/client/v1/data.js');
+const marketplace=require('./data.js');
 
 
 /**
@@ -74,7 +74,6 @@ console.log(counter)
 // 2. Log the variable
 // 3. Log how many brands we have
 
-//console.log(marketplace);
 let brands=[];
 for (let i=0;i<marketplace.length;i++){
   brands.push(marketplace[i]['brand'])
@@ -180,14 +179,38 @@ for(let i=0;i<unique_brands.length;i++)
 // 🎯 TODO: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
+var dico={};
+for(let i=0;i<marketplace.length;i++){
+  if(marketplace[i].brand in dico){
+    dico[marketplace[i].brand].push(marketplace[i]);
+  }
+  else{
+    dico[marketplace[i].brand]=[marketplace[i]];
+  }
+}
+for(let i=0;i<Object.keys(dico).length;i++){
+  const sorted_brand=dico[Object.keys(dico)[i]].sort(function(a, b){return a.price - b.price});
+  for(let j=0;j<sorted_brand.length;j++){
+    //console.log(sorted_brand[j]);
+  }
+}
+
 
 
 // 🎯 TODO: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
 // 2. Log the sort
-
-
-
+console.log("Sort by date for each brand")
+for(let i=0;i<unique_brands.length;i++)
+{
+  //console.log("brand : ",unique_brands[i])
+  let sorted=[];
+  sorted = brands_bis[unique_brands[i]].sort(function(a, b){return new Date(b.date) - new Date(a.date)});
+  for (let j=0;j<sorted.length;j++)
+  {
+    //console.log(sorted[j])
+  }
+}
 
 
 /**
@@ -200,7 +223,14 @@ for(let i=0;i<unique_brands.length;i++)
 // 🎯 TODO: Compute the p90 price value
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
-
+var p90=0;
+var prices=new Set();
+for(let i=0;i<marketplace.length;i++){
+  prices.add(marketplace[i].price);
+}
+var tab=Array.from(prices);
+tab.sort(function(a, b) {return a - b;});
+console.log(tab[Math.trunc(0.1*tab.length)]);
 
 
 
@@ -276,21 +306,60 @@ const COTELE_PARIS = [
 // 🎯 TODO: New released products
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
-
+console.log("new released products")
+var x = new Boolean("false");
+for (let i=0;i<COTELE_PARIS.length;i++)
+{
+  if (new Date(COTELE_PARIS.released)>new Date(Date.now() - 12096e5))
+  {
+    x=new Boolean("true");
+  }
+}
+console.log(x)
 
 // 🎯 TODO: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
-
+console.log("reasonable price")
+var x = new Boolean("false");
+for (let i=0;i<COTELE_PARIS.length;i++)
+{
+  if (COTELE_PARIS[i]['price']>100)
+  {
+    x=new Boolean("true");
+  }
+}
+console.log(x)
 
 // 🎯 TODO: Find a specific product
 // 1. Find the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
 // 2. Log the product
-
+console.log("specific product")
+for (let i=0;i<COTELE_PARIS.length;i++)
+{
+  if (COTELE_PARIS[i]['uuid']===`b56c6d88-749a-5b4c-b571-e5b5c6483131`)
+  {
+    console.log(COTELE_PARIS[i])
+    break;
+  }
+}
 
 // 🎯 TODO: Delete a specific product
 // 1. Delete the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
 // 2. Log the new list of product
+console.log("delete a specific product")
+console.table(COTELE_PARIS)
+
+for (let i=0;i<COTELE_PARIS.length;i++)
+{
+  if (COTELE_PARIS[i]['uuid']===`b56c6d88-749a-5b4c-b571-e5b5c6483131`)
+  {
+    COTELE_PARIS.splice(i,1)
+    break;
+  }
+}
+console.table(COTELE_PARIS)
+
 
 // 🎯 TODO: Save the favorite product
 let blueJacket = {
@@ -307,6 +376,8 @@ jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
 // 2. What do you notice?
+console.log(jacket);
+console.log(blueJacket);
 
 blueJacket = {
   'link': 'https://coteleparis.com/collections/tous-les-produits-cotele/products/la-veste-bleu-roi',
@@ -315,7 +386,10 @@ blueJacket = {
 };
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
-
+Object.assign(jacket,blueJacket);
+jacket.favorite=true;
+console.log(jacket);
+console.log(blueJacket);
 
 
 
@@ -329,3 +403,6 @@ blueJacket = {
 // 🎯 TODO: Save in localStorage
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
+localStorage.setItem('MY_FAVORITES_BRANDS',JSON.stringify(MY_FAVORITE_BRANDS));
+var brand=localStorage.getItem('MY_FAVORITES_BRANDS');
+//console.log(brand);
