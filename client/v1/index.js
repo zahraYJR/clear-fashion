@@ -73,7 +73,7 @@ console.log(BrandsName.size)
 
 // 🎯 TODO: Sort by price
 // 1. Create a function to sort the marketplace products by price
-
+ 
 function SortByPrice(marketplace) 
 {
 	return marketplace.sort((element1,element2) => (element1.price > element2.price) ? 1 : -1);
