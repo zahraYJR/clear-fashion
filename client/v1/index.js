@@ -145,7 +145,9 @@ console.log('Average price of the marketplace : ',AveragePrice,'euros.');
 //   'brand-name-n': [{...}, {...}, ..., {...}],
 // };
 
+
 const brands 
+
 
 //
 // 2. Log the variable
