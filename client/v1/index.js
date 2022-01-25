@@ -284,15 +284,26 @@ const COTELE_PARIS = [
 
 // 🎯 TODO: Find a specific product
 // 1. Find the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
+
+var product;
+COTELE_PARIS.forEach(element => 
+  {if (element.uuid === 'b56c6d88-749a-5b4c-b571-e5b5c6483131') {product = element}})
+
 // 2. Log the product
 
-COTELE_PARIS.forEach(element => 
-  {if (element.uuid === 'b56c6d88-749a-5b4c-b571-e5b5c6483131') {console.log(element)
-}})
+console.log(product)
 
 // 🎯 TODO: Delete a specific product
 // 1. Delete the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
+
+for(var i = 0; i < COTELE_PARIS.length;i++)
+{
+  if (COTELE_PARIS[i].uuid === 'b56c6d88-749a-5b4c-b571-e5b5c6483131') { COTELE_PARIS.splice(i,1)}
+}
+
 // 2. Log the new list of product
+
+console.log(COTELE_PARIS)
 
 // 🎯 TODO: Save the favorite product
 let blueJacket = {
@@ -303,12 +314,19 @@ let blueJacket = {
 
 // we make a copy of blueJacket to jacket
 // and set a new property `favorite` to true
-let jacket = blueJacket;
 
+let jacket = blueJacket;
 jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
+
+console.log('\nbluejacket : ',blueJacket);
+console.log('\njacket : ',jacket);
+
 // 2. What do you notice?
+
+/*We can see that setting the property 'favorite' to true on the jacket
+also adds it to the bluejacket*/
 
 blueJacket = {
   'link': 'https://coteleparis.com/collections/tous-les-produits-cotele/products/la-veste-bleu-roi',
@@ -318,9 +336,13 @@ blueJacket = {
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
 
+let jacketfavorite = Object.assign(blueJacket);
 
+jacketfavorite.favorite = true;
 
+console.log('\nbluejacket : ',blueJacket);
 
+console.log('\njacketfavorite : ',jacketfavorite);
 
 /**
  * 🎬
