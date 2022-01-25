@@ -336,13 +336,11 @@ blueJacket = {
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
 
-let jacketfavorite = Object.assign(blueJacket);
-
-jacketfavorite.favorite = true;
+jacket = JSON.parse(JSON.stringify(blueJacket))
+jacket.favorite = true;
 
 console.log('\nbluejacket : ',blueJacket);
-
-console.log('\njacketfavorite : ',jacketfavorite);
+console.log('\njacketfavorite : ',jacket);
 
 /**
  * 🎬
