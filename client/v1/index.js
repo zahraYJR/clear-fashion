@@ -18,8 +18,6 @@ const MY_FAVORITE_BRANDS = [{
 console.table(MY_FAVORITE_BRANDS);
 console.log(MY_FAVORITE_BRANDS[0]);
 
-
-
 /**
  * 🌱
  * Let's go with a very very simple first todo
@@ -31,9 +29,12 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 0. I have 3 favorite brands stored in MY_FAVORITE_BRANDS variable
 // 1. Create a new variable and assign it the link of the cheapest t-shirt
 // I can find on these e-shops
-// 2. Log the variable
 
 const cheap_tshirt = "https://www.loom.fr/products/le-t-shirt";
+
+// 2. Log the variable
+
+console.log(cheap_tshirt);
 
 /**
  * 👕
@@ -280,6 +281,17 @@ const COTELE_PARIS = [
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
 
+var reasonableprice = true;
+let n = 0;
+while(n<COTELE_PARIS.length && reasonableprice === true)
+{
+  if (COTELE_PARIS[n].price > 100)
+  {
+    reasonableprice = false;
+  } 
+  n = n + 1
+}
+console.log('coteleparis has reasonable priceshop : ',reasonableprice)
 
 
 // 🎯 TODO: Find a specific product
@@ -352,5 +364,6 @@ console.log('\njacketfavorite : ',jacket);
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
 
-localStorage.setItem("MY_FAVORITE_BRANDS",JSON.stringify(MY_FAVORITE_BRANDS));
-log(localStorage)
+//localStorage.setItem("MY_FAVORITE_BRANDS",JSON.stringify(MY_FAVORITE_BRANDS));
+//log(localStorage.getItem('MY_FAVORITE_BRANDS'));
+
