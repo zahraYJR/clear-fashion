@@ -53,8 +53,8 @@ nothing to commit, working tree clean
 2. **Pull** the `master` branch to update your local with the new remote changes
 
 ```sh
-❯ git remote add upstream git@github.com:92bondstreet/clear-fashion.git
-## or ❯ git remote add upstream https://github.com/92bondstreet/clear-fashion
+❯ git remote add upstream git@github.com:zahraYJR/clear-fashion.git
+## or ❯ git remote add upstream https://github.com/zahraYJR/clear-fashion
 ❯ git fetch upstream
 ❯ git pull upstream master
 ```
