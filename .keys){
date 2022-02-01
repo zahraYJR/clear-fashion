@@ -1,0 +1,194 @@
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   1) // Invoking strict mode https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode#invoking_strict_mode
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   2) 'use strict';
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   3) 
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   4) console.log('🚀 This is it.');
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   5) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100   6) const MY_FAVORITE_BRANDS = [{
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   7)   'name': 'Hopaal',
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   8)   'url': 'https://hopaal.com/'
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100   9) }, {
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  10)   'name': 'Loom',
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  11)   'url': 'https://www.loom.fr'
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  12) }, {
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  13)   'name': 'ADRESSE',
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  14)   'url': 'https://adresse.paris/'
+6d74e440 client/v1/index.js (Yassine AZZOUT    2022-01-08 23:02:50 +0100  15) }];
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  16) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  17) console.table(MY_FAVORITE_BRANDS);
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  18) console.log(MY_FAVORITE_BRANDS[0]);
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  19) 
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  20) //const donnees = require('data')
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  21) 
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  22) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  23) /**
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  24)  * 🌱
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  25)  * Let's go with a very very simple first todo
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  26)  * Keep pushing
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  27)  * 🌱
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  28)  */
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  29) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  30) // 🎯 TODO: The cheapest t-shirt
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  31) // 0. I have 3 favorite brands stored in MY_FAVORITE_BRANDS variable
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  32) // 1. Create a new variable and assign it the link of the cheapest t-shirt
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  33) // I can find on these e-shops
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  34) // 2. Log the variable
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  35) let lien_moins_cher = 'https://www.loom.fr/collections/tous-les-vetements/products/le-t-shirt';
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  36) console.log(lien_moins_cher);
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  37) 
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  38) 
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  39) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  40) /**
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  41)  * 👕
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  42)  * Easy 😁?
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  43)  * Now we manipulate the variable `marketplace`
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  44)  * `marketplace` is a list of products from several brands e-shops
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  45)  * The variable is loaded by the file data.js
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  46)  * 👕
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  47)  */
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  48) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  49) // 🎯 TODO: Number of products
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  50) // 1. Create a variable and assign it the number of products
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  51) // 2. Log the variable
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  52) let number_products = marketplace.length;
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  53) console.log(number_products);
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  54) 
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  55) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  56) // 🎯 TODO: Brands name
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  57) // 1. Create a variable and assign it the list of brands name only
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  58) // 2. Log the variable
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  59) // 3. Log how many brands we have
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  60) var Brands_only =[]; 
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  61) marketplace.forEach(value => {Brands_only.push(value.brand)});
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  62) Brands_only = new Set(Brands_only)
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  63) console.log(Brands_only);
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  64) console.log(Brands_only.size)
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  65) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  66) // 🎯 TODO: Sort by price
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  67) // 1. Create a function to sort the marketplace products by price
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  68) // 2. Create a variable and assign it the list of products by price from lowest to highest
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  69) // 3. Log the variable
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  70) var trier;
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  71) function sort_by_price(marketplace) 
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  72) {
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  73) 	trier = marketplace.sort((value1,value2) => (value1.price > value2.price) ? 1 : -1);
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  74) 	return trier;
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  75) }
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  76) trier = sort_by_price(marketplace);
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  77) console.log(trier);
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  78) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  79) // 🎯 TODO: Sort by date
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  80) // 1. Create a function to sort the marketplace objects by products date
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  81) // 2. Create a variable and assign it the list of products by date from recent to old
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  82) // 3. Log the variable
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  83) var trier_date;
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  84) function sort_by_date(marketplace) 
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  85) {
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  86) 	trier_date = marketplace.sort((value1,value2) => (value1.date > value2.date) ? -1 : 1);
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  87) 	return trier_date;
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  88) }
+00000000 client/v1/index.js (Not Committed Yet 2022-01-25 15:22:12 +0100  89) trier_date = sort_by_date(marketplace);
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  90) console.log(trier_date);
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  91) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  92) // 🎯 TODO: Filter a specific price range
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  93) // 1. Filter the list of products between 50€ and 100€
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100  94) // 2. Log the list
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  95) var S0_to_100 = [];
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  96) marketplace.forEach(value => {if(value.price >50 && value.price <100){S0_to_100.push(value)}});
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100  97) console.log(S0_to_100);
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100  98) 
+827f86f4 client/v1/index.js (Yassine AZZOUT    2022-01-22 22:53:26 +0100  99) // 🎯 TODO: Average price
+827f86f4 client/v1/index.js (Yassine AZZOUT    2022-01-22 22:53:26 +0100 100) // 1. Determine the average price of the marketplace
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 101) // 2. Log the average
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 102) var avg_price = 0;
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 103) marketplace.forEach(value => {avg_price += value.price});
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 104) avg_price /= marketplace.length;
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 105) console.log(`avg_price ${avg_price}`);
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100 106) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 107) /**
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 108)  * 🏎
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 109)  * We are almost done with the `marketplace` variable
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 110)  * Keep pushing
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 111)  * 🏎
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 112)  */
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100 113) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 114) // 🎯 TODO: Products by brands
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 115) // 1. Create an object called `brands` to manipulate products by brand name
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 116) // The key is the brand name
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 117) // The value is the array of products
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100 118) //
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 119) // Example:
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 120) // const brands = {
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 121) //   'brand-name-1': [{...}, {...}, ..., {...}],
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 122) //   'brand-name-2': [{...}, {...}, ..., {...}],
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 123) //   ....
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 124) //   'brand-name-n': [{...}, {...}, ..., {...}],
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 125) // };
+^23e69b9 client/index.js    (Yassine AZZOUT    2021-01-16 14:52:10 +0100 126) //
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 127) // 2. Log the variable
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 128) // 3. Log the number of products by brands
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 129) const brands = {};
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 130) Brands_only.forEach(value => {brands[value] = []});
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 131) marketplace.forEach(value => {brands[value.brand].push(value)});
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 132) console.log('non',brands);
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 133) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 134) // 🎯 TODO: Sort by price for each brand
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 135) // 1. For each brand, sort the products by price, from highest to lowest
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 136) // 2. Log the sort
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 137) for (k in brands.keys){
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 138)   brands[k] = sort_by_price(brands[k]);
+d0ef1327 client/v1/index.js (Artemis618        2022-01-25 14:49:08 +0100 139) }
+00000000 client/v1/index.js (Not Committed Yet 2022-01-25 15:22:12 +0100 140) console.log('by price', brands);
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 141) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 142) // 🎯 TODO: Sort by date for each brand
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 143) // 1. For each brand, sort the products by date, from old to recent
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 144) // 2. Log the sort
+00000000 client/v1/index.js (Not Committed Yet 2022-01-25 15:22:12 +0100 145) for (k in brands.keys){
+00000000 client/v1/index.js (Not Committed Yet 2022-01-25 15:22:12 +0100 146)   brands[k] = sort_by_date(brands[k]);
+00000000 client/v1/index.js (Not Committed Yet 2022-01-25 15:22:12 +0100 147) }
+00000000 client/v1/index.js (Not Committed Yet 2022-01-25 15:22:12 +0100 148) console.log('by date', brands);
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 149) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 150) /**
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 151)  * 💶
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 152)  * Let's talk about money now
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 153)  * Do some Maths
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 154)  * 💶
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 155)  */
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 156) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 157) // 🎯 TODO: Compute the p90 price value
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 158) // 1. Compute the p90 price value of each brand
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 159) // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 160) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 161) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 162) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 163) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 164) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 165) /**
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 166)  * 🧥
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 167)  * Cool for your effort.
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 168)  * It's almost done
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 169)  * Now we manipulate the variable `COTELE_PARIS`
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 170)  * `COTELE_PARIS` is a list of products from https://coteleparis.com/collections/tous-les-produits-cotele
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 171)  * 🧥
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 172)  */
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 173) 
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 174) const COTELE_PARIS = [
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 175)   {
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 176)     link: 'https://coteleparis.com//collections/tous-les-produits-cotele/products/la-baseball-cap-gris',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 177)     price: 45,
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 178)     name: 'BASEBALL CAP - TAUPE',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 179)     uuid: 'af07d5a4-778d-56ad-b3f5-7001bf7f2b7d',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 180)     released: '2021-01-11'
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 181)   },
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 182)   {
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 183)     link: 'https://coteleparis.com//collections/tous-les-produits-cotele/products/la-chemise-milleraie-navy',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 184)     price: 85,
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 185)     name: 'CHEMISE MILLERAIE MIXTE - NAVY',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 186)     uuid: 'd62e3055-1eb2-5c09-b865-9d0438bcf075',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 187)     released: '2020-12-21'
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 188)   },
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 189)   {
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 190)     link: 'https://coteleparis.com//collections/tous-les-produits-cotele/products/la-veste-fuchsia',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 191)     price: 110,
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 192)     name: 'VESTE - FUCHSIA',
+792a054b client/index.js    (Yassine AZZOUT    2021-01-17 01:30:40 +0100 193)     uuid: 'da3858a2-95e3-53da-b92c-7f3d535a753d',
+792a054b client/index.js    (
