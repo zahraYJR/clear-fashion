@@ -8,6 +8,9 @@ let currentPagination = {};
 // inititiqte selectors
 const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
+const selectBrand = document.querySelector('#brand-select');
+const selectFilter = document.querySelector('#filter-select');
+const selectSort = document.querySelector('#sort-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
 
@@ -21,16 +24,19 @@ const setCurrentProducts = ({result, meta}) => {
   currentPagination = meta;
 };
 
+
+
+
 /**
  * Fetch products from api
  * @param  {Number}  [page=1] - current page to fetch
  * @param  {Number}  [size=12] - size of the page
  * @return {Object}
  */
-const fetchProducts = async (page = 1, size = 12) => {
+const fetchProducts = async (page = 1, size = 12,brand='') => {
   try {
     const response = await fetch(
-      `https://clear-fashion-api.vercel.app?page=${page}&size=${size}`
+      `https://clear-fashion-api.vercel.app?page=${page}&size=${size}&brand=${brand}`
     );
     const body = await response.json();
 
@@ -53,6 +59,7 @@ const fetchProducts = async (page = 1, size = 12) => {
 const renderProducts = products => {
   const fragment = document.createDocumentFragment();
   const div = document.createElement('div');
+ 
   const template = products
     .map(product => {
       return `
@@ -70,6 +77,10 @@ const renderProducts = products => {
   sectionProducts.innerHTML = '<h2>Products</h2>';
   sectionProducts.appendChild(fragment);
 };
+
+
+
+
 
 /**
  * Render page selector
@@ -111,9 +122,68 @@ const render = (products, pagination) => {
  * @type {[type]}
  */
 selectShow.addEventListener('change', event => {
-  fetchProducts(currentPagination.currentPage, parseInt(event.target.value))
+  fetchProducts(currentPagination.currentPage, parseInt(event.target.value),selectBrand.value)
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination));
+});
+
+selectPage.addEventListener('change', event => {
+  fetchProducts(parseInt(event.target.value),selectShow.value,selectBrand.value)
+    .then(setCurrentProducts)
+    .then(() => render(currentProducts, currentPagination));
+});
+
+selectBrand.addEventListener('change', event => {
+  fetchProducts(currentPagination.currentPage, selectShow.value,event.target.value)
+  .then(setCurrentProducts)
+  .then(() => render(currentProducts, currentPagination));
+
+});
+
+selectSort.addEventListener('change',event =>{
+  fetchProducts(currentPagination.currentPage, selectShow.value,selectBrand.value)
+  .then(setCurrentProducts)
+  const sort= event.target.value;
+  switch(sort){
+    case "price-asc":
+      currentProducts.sort((p1, p2) => p1.price - p2.price);
+      break;
+    case "price-desc":
+      currentProducts.sort((p1, p2) => p2.price - p1.price);
+      break;
+    case "date-asc":
+      currentProducts.sort((p1, p2) => Date.parse(p2.released) - Date.parse(p1.released));
+      break;
+    case "date-desc":
+      currentProducts.sort((p1, p2) => Date.parse(p1.released) - Date.parse(p2.released));
+      break;
+    case " ":
+      break;
+
+  }
+  render(currentProducts, currentPagination);
+
+
+});
+function sort_50_100(arr){
+  var list = [];
+  for (let i = 0; i < arr.length; i++) 
+  {
+    if(arr[i].price<100 && arr[i].price>50) { list.push(arr[i]); }
+  }
+  return list;
+}
+
+selectFilter.addEventListener('change',event =>{
+  fetchProducts(currentPagination.currentPage, selectShow.value,selectBrand.value)
+  .then(setCurrentProducts)
+  const filter= event.target.value;
+  switch(filter){
+
+    
+  }
+
+
 });
 
 document.addEventListener('DOMContentLoaded', () =>
@@ -121,3 +191,5 @@ document.addEventListener('DOMContentLoaded', () =>
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination))
 );
+
+
