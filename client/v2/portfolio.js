@@ -1,6 +1,24 @@
 // Invoking strict mode https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode#invoking_strict_mode
 'use strict';
 
+/**
+ * Done checked :
+ * F0 x
+ * F1 
+ * F2
+ * F3
+ * F4
+ * F5 x
+ * F6 x
+ * F7
+ * F8
+ * F9
+ * F10
+ * F11
+ * F12
+ */
+
+
 // current products on the page
 let currentProducts = [];
 let currentPagination = {};
@@ -10,6 +28,7 @@ const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const selectSort = document.querySelector('#sort-select');
 
 /**
  * Set global value
@@ -46,6 +65,8 @@ const fetchProducts = async (page = 1, size = 12) => {
   }
 };
 
+
+
 /**
  * Render list of products
  * @param  {Array} products
@@ -64,6 +85,7 @@ const renderProducts = products => {
     `;
     })
     .join('');
+
 
   div.innerHTML = template;
   fragment.appendChild(div);
@@ -121,3 +143,28 @@ document.addEventListener('DOMContentLoaded', () =>
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination))
 );
+
+selectPage.addEventListener('change',event => {
+  fetchProducts(parseInt(event.target.value), currentPagination.currentShow)
+    .then(setCurrentProducts)
+    .then(() => render(currentProducts, currentPagination));
+});
+
+selectSort.addEventListener('change', event => {
+  console.log(event.target.value);
+  const srt = event.target.value;
+  if(srt === 'price-asc'){
+    currentProducts.sort((x,y) => x.price - y.price);
+  }
+  else if(srt === 'price-desc'){
+    currentProducts.sort((x,y) => y.price - x.price);
+  }
+  else if(srt === 'date-asc'){
+    currentProducts.sort((x,y) => Date.parse(y.released) - Date.parse(x.released));
+  }
+  else if(srt === 'date-desc'){
+    currentProducts.sort((x,y) => Date.parse(x.released) - Date.parse(y.released));
+  }
+  console.log(currentProducts);
+  render(currentProducts,currentPagination);  //
+});

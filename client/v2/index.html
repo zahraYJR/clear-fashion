@@ -19,13 +19,20 @@
         <label for="page-select">Go to page:</label>
         <select name="page" id="page-select"> </select>
       </div>
-      <div id="filters">
-        <span>By reasonable price</span>
-        <span>By recently released</span>
-        <div id="brand">
-          <label for="brand-select">By brands:</label>
-          <select name="brand" id="brand-select"> </select>
-        </div>
+      <div id="by">
+        <label for="by-filter">By:</label>
+        <select name="by" id="by-filter">
+          <option value="rea-price">Reasonable price</option>
+          <option value="rec-released">Recently released</option>
+        </select>
+      </div>
+      <div id="brand">
+        <label for="brand-filter">By brands:</label>
+        <select name="brand" id="brand-select">
+          <option value="12">12</option>
+          <option value="24">24</option>
+          <option value="48">48</option>
+        </select>
       </div>
       <div id="sort">
         <label for="sort-select">Sort:</label>
