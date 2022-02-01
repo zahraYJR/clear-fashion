@@ -364,6 +364,6 @@ console.log('\njacketfavorite : ',jacket);
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
 
-//localStorage.setItem("MY_FAVORITE_BRANDS",JSON.stringify(MY_FAVORITE_BRANDS));
-//log(localStorage.getItem('MY_FAVORITE_BRANDS'));
+window.localStorage.setItem("MY_FAVORITE_BRANDS",JSON.stringify(MY_FAVORITE_BRANDS));
+log(window.localStorage.getItem('MY_FAVORITE_BRANDS'));
 
