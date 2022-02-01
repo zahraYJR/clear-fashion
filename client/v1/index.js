@@ -157,10 +157,10 @@ console.log('by date', brands);
 // 🎯 TODO: Compute the p90 price value
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
-
-
-
-
+Brands_only.forEach(value => {let numberOfValue = Math.round(brands[value].length*0.1);
+  let p90 = brands[value][numberOfValue].price; 
+  console.log(value + " : " + p90);
+});
 
 /**
  * 🧥
@@ -233,21 +233,35 @@ const COTELE_PARIS = [
 // 🎯 TODO: New released products
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
-
+let new_products = true;
+COTELE_PARIS.forEach(value => {if(value.released < Date.now - 12096e5){new_products = false}});
+console.log(new_products);
 
 // 🎯 TODO: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
-
+let testPrice = true;
+COTELE_PARIS.forEach(value => {if(value.price > 100){testPrice = false}});
+console.log("The shop only has reasonable prices : " + testPrice);
 
 // 🎯 TODO: Find a specific product
 // 1. Find the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
 // 2. Log the product
-
+COTELE_PARIS.forEach(value => {if(value.uuid == 'b56c6d88-749a-5b4c-b571-e5b5c6483131'){console.log(value.name)}});
 
 // 🎯 TODO: Delete a specific product
 // 1. Delete the product with the uuid `b56c6d88-749a-5b4c-b571-e5b5c6483131`
 // 2. Log the new list of product
+let temp={};
+COTELE_PARIS.forEach(value => {if(value.uuid == 'b56c6d88-749a-5b4c-b571-e5b5c6483131'){temp = value}});
+for( var i = 0; i < COTELE_PARIS.length; i++){ 
+                                   
+  if ( COTELE_PARIS[i] === temp) { 
+      COTELE_PARIS.splice(i, 1); 
+      i--; 
+  }
+}
+console.log(COTELE_PARIS);
 
 // 🎯 TODO: Save the favorite product
 let blueJacket = {
