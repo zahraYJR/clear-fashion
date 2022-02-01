@@ -12,6 +12,8 @@ const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
 const filterByPrice = document.querySelector('#filter-price');
 const filterByDate = document.querySelector('#filter-date');
+const selectsort = document.querySelector('#sort-select');
+const selectBrand = document.querySelector('#brand-select');
 
 /**
  * Set global value
@@ -33,29 +35,6 @@ const fetchProducts = async (page = 1, size = 12) => {
   try {
     const response = await fetch(
       `https://clear-fashion-api.vercel.app?page=${page}&size=${size}`
-    );
-    const body = await response.json();
-
-    if (body.success !== true) {
-      console.error(body);
-      return {currentProducts, currentPagination};
-    }
-
-    return body.data;
-  } catch (error) {
-    console.error(error);
-    return {currentProducts, currentPagination};
-  }
-};
-
-/**
- * Fetch all products from api
- * @return {Object}
- */
- const fetchAllProducts = async () => {
-  try {
-    const response = await fetch(
-      `https://clear-fashion-api.vercel.app?`
     );
     const body = await response.json();
 
@@ -125,6 +104,7 @@ const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
   renderIndicators(pagination);
+  renderBrandination(pagination);
 };
 
 /**
@@ -147,31 +127,62 @@ selectPage.addEventListener('change', event => {
     .then(() => render(currentProducts, currentPagination));
 });
 
-filterByPrice.addEventListener('change', event=>{
-  if (event.target.checked) {
-    currentProducts=currentProducts.filter(a=>a.price<50);
-    render(currentProducts,currentPagination);
-  } else {
-    console.log("Checkbox is not checked..");
+filterByPrice.onclick=function(){
+  currentProducts=currentProducts.filter(a=>a.price<50);
+  render(currentProducts,currentPagination);
+};
+
+filterByDate.onclick=function(){
+  currentProducts=currentProducts.filter(a=>
+    Math.abs(new Date(a.released.split('-')[0],a.released.split('-')[1],a.released.split('-')[2])-Date.now())>1209600000
+  );
+  render(currentProducts,currentPagination);
+};
+
+selectsort.addEventListener('change',event=>{
+  switch(event.target.value){
+    case 'price-asc':
+      currentProducts.sort(function(a, b) {return a.price - b.price;});
+      break;
+    case 'price-desc':
+      currentProducts.sort(function(a, b) {return a.price - b.price;}).reverse();
+      break;
+    case 'date-asc':
+      currentProducts.sort(function(a, b) {return new Date(a.released.split('-')[0],a.released.split('-')[1],a.released.split('-')[2]) - new Date(b.released.split('-')[0],b.released.split('-')[1],b.released.split('-')[2]);});
+      break;
+    case 'date-desc':
+      currentProducts.sort(function(a, b) {return new Date(a.released.split('-')[0],a.released.split('-')[1],a.released.split('-')[2]) - new Date(b.released.split('-')[0],b.released.split('-')[1],b.released.split('-')[2]);}).reverse();
+      break;
+    default:
+      console.log('patate');
   }
+  render(currentProducts, currentPagination);
 });
 
-filterByPrice.addEventListener('change', event=>{
-  if (event.target.checked) {
-    currentProducts=currentProducts.filter(a=>a.price<50);
-    render(currentProducts,currentPagination);
-  } else {
-    console.log("Checkbox is not checked..");
+const renderBrandination = products => {
+  let brands=[];
+  console.log(currentProducts[5]);
+  for (let i=0;i<currentProducts.length;i++){
+    brands.push(currentProducts[i].brand)
   }
-});
+  console.log(brands);
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+  var unique_brands = brands.filter(onlyUnique);
+  console.log(unique_brands);
+  const options = Array.from(
+    {'length': unique_brands.length},
+    (value, index) => `<option value="${unique_brands[index]}">${unique_brands[index]}</option>`
+  ).join('');
 
-filterByDate.addEventListener('change', event=>{
-  if (event.target.checked) {
-    currentProducts=currentProducts.filter(a=>a.released<);
-    render(currentProducts,currentPagination);
-  } else {
-    console.log("Checkbox is not checked..");
-  }
+  selectBrand.innerHTML = options;
+};
+
+selectBrand.addEventListener('change', event=>{
+  currentProducts=currentProducts.filter(a=>a.brand == event.target.value);
+  render(currentProducts,currentPagination);
+  console.log("Not equal");
 });
 
 document.addEventListener('DOMContentLoaded', () =>
