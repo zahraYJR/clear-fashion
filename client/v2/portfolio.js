@@ -10,6 +10,8 @@ const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const filterByPrice = document.querySelector('#filter-price');
+const filterByDate = document.querySelector('#filter-date');
 
 /**
  * Set global value
@@ -31,6 +33,29 @@ const fetchProducts = async (page = 1, size = 12) => {
   try {
     const response = await fetch(
       `https://clear-fashion-api.vercel.app?page=${page}&size=${size}`
+    );
+    const body = await response.json();
+
+    if (body.success !== true) {
+      console.error(body);
+      return {currentProducts, currentPagination};
+    }
+
+    return body.data;
+  } catch (error) {
+    console.error(error);
+    return {currentProducts, currentPagination};
+  }
+};
+
+/**
+ * Fetch all products from api
+ * @return {Object}
+ */
+ const fetchAllProducts = async () => {
+  try {
+    const response = await fetch(
+      `https://clear-fashion-api.vercel.app?`
     );
     const body = await response.json();
 
@@ -120,6 +145,33 @@ selectPage.addEventListener('change', event => {
   fetchProducts(parseInt(event.target.value), currentPagination.size)
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination));
+});
+
+filterByPrice.addEventListener('change', event=>{
+  if (event.target.checked) {
+    currentProducts=currentProducts.filter(a=>a.price<50);
+    render(currentProducts,currentPagination);
+  } else {
+    console.log("Checkbox is not checked..");
+  }
+});
+
+filterByPrice.addEventListener('change', event=>{
+  if (event.target.checked) {
+    currentProducts=currentProducts.filter(a=>a.price<50);
+    render(currentProducts,currentPagination);
+  } else {
+    console.log("Checkbox is not checked..");
+  }
+});
+
+filterByDate.addEventListener('change', event=>{
+  if (event.target.checked) {
+    currentProducts=currentProducts.filter(a=>a.released<);
+    render(currentProducts,currentPagination);
+  } else {
+    console.log("Checkbox is not checked..");
+  }
 });
 
 document.addEventListener('DOMContentLoaded', () =>

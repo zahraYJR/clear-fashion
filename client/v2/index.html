@@ -20,10 +20,17 @@
         <select name="page" id="page-select"> </select>
       </div>
       <div id="filters">
-        <span>By reasonable price</span>
-        <span>By recently released</span>
+        <span>Filters:</span>
+        <div id="price">
+          <label for="filter-price">  By reasonable price</label>
+          <input type="checkbox" id="filter-price">
+        </div>
+        <div id="date">
+          <label for="filter-date">  By recently released</label>
+          <input type="checkbox" id="filter-date">
+        </div>
         <div id="brand">
-          <label for="brand-select">By brands:</label>
+          <label for="brand-select">  By brands:</label>
           <select name="brand" id="brand-select"> </select>
         </div>
       </div>
