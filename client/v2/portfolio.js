@@ -10,6 +10,7 @@ const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const spanNbNewProducts = document.querySelector('#nbNewProducts');
 const filterByPrice = document.querySelector('#filter-price');
 const filterByDate = document.querySelector('#filter-date');
 const selectsort = document.querySelector('#sort-select');
@@ -98,6 +99,8 @@ const renderIndicators = pagination => {
   const {count} = pagination;
 
   spanNbProducts.innerHTML = count;
+  spanNbNewProducts.innerHTML=count;
+
 };
 
 const render = (products, pagination) => {
@@ -154,23 +157,20 @@ selectsort.addEventListener('change',event=>{
       currentProducts.sort(function(a, b) {return new Date(a.released.split('-')[0],a.released.split('-')[1],a.released.split('-')[2]) - new Date(b.released.split('-')[0],b.released.split('-')[1],b.released.split('-')[2]);}).reverse();
       break;
     default:
-      console.log('patate');
+      console.log("patate");
   }
   render(currentProducts, currentPagination);
 });
 
 const renderBrandination = products => {
   let brands=[];
-  console.log(currentProducts[5]);
   for (let i=0;i<currentProducts.length;i++){
     brands.push(currentProducts[i].brand)
   }
-  console.log(brands);
   function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
   }
   var unique_brands = brands.filter(onlyUnique);
-  console.log(unique_brands);
   const options = Array.from(
     {'length': unique_brands.length},
     (value, index) => `<option value="${unique_brands[index]}">${unique_brands[index]}</option>`
@@ -182,7 +182,6 @@ const renderBrandination = products => {
 selectBrand.addEventListener('change', event=>{
   currentProducts=currentProducts.filter(a=>a.brand == event.target.value);
   render(currentProducts,currentPagination);
-  console.log("Not equal");
 });
 
 document.addEventListener('DOMContentLoaded', () =>
