@@ -8,13 +8,17 @@ let currentPagination = {};
 // inititiqte selectors
 const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
-const sectionProducts = document.querySelector('#products');
-const spanNbProducts = document.querySelector('#nbProducts');
-const spanNbNewProducts = document.querySelector('#nbNewProducts');
 const filterByPrice = document.querySelector('#filter-price');
 const filterByDate = document.querySelector('#filter-date');
 const selectsort = document.querySelector('#sort-select');
 const selectBrand = document.querySelector('#brand-select');
+const sectionProducts = document.querySelector('#products');
+const spanNbProducts = document.querySelector('#nbProducts');
+const spanNbNewProducts = document.querySelector('#nbNewProducts');
+const spanP50 = document.querySelector('#p50');
+const spanP90 = document.querySelector('#p90');
+const spanP95 = document.querySelector('#p95');
+const spanLastReleasedDate = document.querySelector('#lastReleasedDate');
 
 /**
  * Set global value
@@ -95,18 +99,67 @@ const renderPagination = pagination => {
  * Render page selector
  * @param  {Object} pagination
  */
-const renderIndicators = pagination => {
+const renderIndicators = (pagination,products )=> {
   const {count} = pagination;
-
+  const nb=NbNewProducts(products);
+  const p50=p_value(products,50);
+  const p90=p_value(products,90);
+  const p95=p_value(products,95);
+  const lastReleasedDate=LastReleasedDate(products);
+  console.log(lastReleasedDate)
   spanNbProducts.innerHTML = count;
-  spanNbNewProducts.innerHTML=count;
+  spanNbNewProducts.innerHTML=nb;
 
+  spanLastReleasedDate.innerHTML=lastReleasedDate;
+  spanP50.innerHTML=p50;
+  spanP90.innerHTML=p90;
+  spanP95.innerHTML=p95;
 };
+
+function p_value(products,value){
+  const val=(100-value)/100;
+
+  var prices=new Set();
+  for(let i=0;i<products.length;i++){
+    prices.add(products[i].price);
+  }
+  var tab=Array.from(prices);
+  tab.sort(function(a, b) {return a - b;});
+  //console.log(tab[Math.trunc(val*tab.length)])
+  return tab[Math.trunc(val*tab.length)];
+}
+
+function LastReleasedDate(products){
+  var releasedates=new Set();
+  for(let i=0;i<products.length;i++){
+    releasedates.add(products[i].released);
+    //console.log(products[i].released);
+  }
+  var tab=Array.from(releasedates);
+  tab.sort(function(a, b) {return a - b;});
+  //console.log(tab[0])
+  return tab[0];
+}
+
+function NbNewProducts(products){
+  var x = 0;
+  for (let i=0;i<products.length;i++)
+  {
+    //console.log(new Date(Math.abs(Date.now() - 12096e5)))
+    //console.log(new Date(products[i].released))
+    if (new Date(products[i].released)>new Date(Math.abs(Date.now() - 12096e5)))
+    {
+      x=x+1;
+    }
+  }
+  //console.log(x);
+  return x;
+}
 
 const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
-  renderIndicators(pagination);
+  renderIndicators(pagination,products);
   renderBrandination(pagination);
 };
 
