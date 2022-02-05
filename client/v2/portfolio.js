@@ -14,6 +14,10 @@ const spanNbProducts = document.querySelector('#nbProducts');
 const spancountRecentlyReleased = document.querySelector('#count-recently-released');
 const Price_under50 = document.querySelector('#price-less50');
 const Recently_released = document.querySelector('#recently-released');
+const spanp50 =document.querySelector('#p50');
+const spanp90 =document.querySelector('#p90');
+const spanp95 =document.querySelector('#p95');
+
 
 /**
  * Set global value
@@ -163,15 +167,42 @@ const renderNewProducts = products => {
     spancountRecentlyReleased.innerHTML = count;
   }
 }
+const renderp50 = products => {
+  var index=parseInt(products.length*0.5);
+  var sorted = SortAsc(products);
+  var count = sorted[index].price;
+  spanp50.innerHTML=count;
+}
+
+const renderp90 = products => {
+  var index=parseInt(products.length*0.9);
+  var sorted = SortAsc(products);
+  var count = sorted[index].price;
+  spanp90.innerHTML=count;
+}
+
+const renderp95 = products => {
+  var index=parseInt(products.length*0.95);
+  var sorted = SortAsc(products);
+  var count = sorted[index].price;
+  spanp95.innerHTML=count;
+}
 
 const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
   renderIndicators(pagination);
   renderNewProducts(products);
+  renderp50(products);
+  renderp90(products);
+  renderp95(products);
 };
 
- 
+const SortAsc = (liste_a_trier) =>
+{
+	let sort = liste_a_trier.sort((value1,value2) => (value1.price > value2.price) ? 1 : -1);
+	return sort;
+};
 /**
  * Declaration of all Listeners
  */
