@@ -36,6 +36,7 @@ let lien_moins_cher = 'https://www.loom.fr/collections/tous-les-vetements/produc
 console.log(lien_moins_cher);
 
 console.log('test');
+console.log('tesr2');
 
 /**
  * 👕
