@@ -11,6 +11,9 @@ const selectPage = document.querySelector('#page-select');
 const selectBrand = document.querySelector('#brand-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const spancountRecentlyReleased = document.querySelector('#count-recently-released');
+const Price_under50 = document.querySelector('#price-less50');
+const Recently_released = document.querySelector('#recently-released');
 
 /**
  * Set global value
@@ -29,7 +32,7 @@ const setCurrentProducts = ({result, meta}) => {
  * @param  {String}  [brand=""] - brand to filter
  * @return {Object}
  */
-const fetchProducts = async (page = 1, size = 12, brand = "") => {
+const fetchProducts = async (page = 1, size = 12, brand = "", less50 = "No", recent = "No") => {
   try {
     const response = await fetch(
       `https://clear-fashion-api.vercel.app?page=${page}&size=${size}&brand=${brand}`
@@ -41,12 +44,51 @@ const fetchProducts = async (page = 1, size = 12, brand = "") => {
       return {currentProducts, currentPagination};
     }
     console.log(body.data);
+    if(less50 != "No")
+    {
+      return price_less_than_50(body);
+    }
+    if(recent != "No")
+    {
+      return recent_products_30(body);
+    }
     return body.data;
   } catch (error) {
     console.error(error);
     return {currentProducts, currentPagination};
   }
 };
+
+const price_less_than_50 = (body) =>
+{
+  let listeprod = [];
+  for(let i =0; i<body.data.result.length;i++)
+  {
+    if(body.data.result[i].price<=50)
+    {
+      listeprod.push(body.data.result[i]);
+    }
+  }
+  body.data.result = listeprod;
+  return body.data;
+}
+
+const recent_products_30 = (body) =>
+{
+  var today = new Date();
+  let listeprod = [];
+  for(let i =0; i<body.data.result.length;i++)
+  {
+    var date_produit = new Date(body.data.result[i].released);
+    var nbjours = Math.floor((today-date_produit)/(1000*60*60*24));
+    if(nbjours<=30)
+    {
+      listeprod.push(body.data.result[i]);
+    }
+  }
+  body.data.result = listeprod;
+  return body.data;
+}
 
 /**
  * Render list of products
@@ -58,10 +100,11 @@ const renderProducts = products => {
   const template = products
     .map(product => {
       return `
-      <div class="product" id=${product.uuid}>
+      <div class="product" id=${product.uuid}>*
         <span>${product.brand}</span>
         <a href="${product.link}">${product.name}</a>
         <span>${product.price}</span>
+        <span>${product.released}</span>
       </div>
     `;
     })
@@ -106,10 +149,26 @@ const renderIndicators = pagination => {
   spanNbProducts.innerHTML = count;
 };
 
+const renderNewProducts = products => {
+  let count = 0;
+  var today = new Date();
+  for(let i =0;i<products.length;i++)
+  {
+    var date_produit = new Date(products[i].released);
+    var nbjours = Math.floor((today-date_produit)/(1000*60*60*24));
+    if(nbjours<=30)
+    {
+      count = count + 1;
+    }
+    spancountRecentlyReleased.innerHTML = count;
+  }
+}
+
 const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
   renderIndicators(pagination);
+  renderNewProducts(products);
 };
 
  
@@ -137,6 +196,18 @@ selectBrand.addEventListener('change', event => {
   fetchProducts(currentPagination.currentPage, currentPagination.pageSize, event.target.value)
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination));
+});
+
+Price_under50.addEventListener('change', event => {
+  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.brand, event.target.value)
+  .then(setCurrentProducts)  
+  .then(() => render(currentProducts, currentPagination));
+});
+
+Recently_released.addEventListener('change', event => {
+  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.brand, "No", event.target.value)
+  .then(setCurrentProducts)  
+  .then(() => render(currentProducts, currentPagination));
 });
 
 document.addEventListener('DOMContentLoaded', () =>
