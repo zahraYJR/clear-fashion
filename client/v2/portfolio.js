@@ -139,13 +139,6 @@ selectBrand.addEventListener('change', event => {
     .then(() => render(currentProducts, currentPagination));
 });
 
-
-selectPage.addEventListener('change', event => {
-  fetchProducts(parseInt(event.target.value),currentProducts.size)
-    .then(setCurrentProducts)
-    .then(() => render(currentProducts, currentPagination));
-});
-
 document.addEventListener('DOMContentLoaded', () =>
   fetchProducts()
     .then(setCurrentProducts)
