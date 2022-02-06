@@ -241,9 +241,6 @@ selectBrand.addEventListener('change', event => {
         currentProducts;
         break;
     }
-    
-
-    
   }).then(() => render(currentProducts, currentPagination));
 
 });
@@ -295,17 +292,16 @@ function recent_product(arr)
   for (let i = 0; i < arr.length; i++) 
   {
     var date = new Date(arr[i].released);
-    date=addDaysToDate(date,14);
+    date=addDaysToDate(date,20);
     var date2=new Date();
     if(date>date2){
-      console.log(date);
-      list.push(item);
+      list.push(arr[i]);
     }
-
   }
 
   return list;
 }
+
 
 
 
@@ -321,6 +317,7 @@ selectFilter.addEventListener('change',event =>{
        currentProducts=reasonable_price(currentProducts);
      break;
     default:
+      currentProducts;
       break;
   }
   render(currentProducts, currentPagination);
