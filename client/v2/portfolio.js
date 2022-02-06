@@ -19,6 +19,7 @@ const selectFilter = document.querySelector('#filter-select');
 const selectSort = document.querySelector('#sort-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const onclick  = document.querySelector('#favorite-product');
 
 /**
  * Set global value
@@ -79,13 +80,14 @@ const renderProducts = products => {
           <span>Price : </span>
           <strong>${product.price} €</strong>
         <div>
-          <input type="checkbox" onclick="checkFavorite('${product.uuid}')" ${product.favorite ? "checked" : ""}>
+          <input type="checkbox" onclick="checkFavorite('${product.uuid}')" >
           <label for="favorite-product">Add to favorite</label>
         </div>
       </div>
     `;
     })
     .join('');
+
 
     if(currentProducts.length != 0 )div.innerHTML = template;
     else div.innerHTML = "0 product correspond to these filters on this page";
@@ -94,7 +96,18 @@ const renderProducts = products => {
   sectionProducts.appendChild(fragment);
 };
 
+// function checkFavorite(_uuid)
+// {
+//   favoritesProducts.push(_uuid);
 
+//   for (let i = 0; i < favoritesProducts.length; i++) 
+//   {
+//    if(favoritesProducts.includes(_uuid)){favoritesProducts.remove(_uuid);} 
+//     console.log(favoritesProducts[i]);
+
+//   }
+  
+// }
 
 
 
@@ -323,6 +336,8 @@ selectFilter.addEventListener('change',event =>{
   render(currentProducts, currentPagination);
 
 });
+
+
 
 document.addEventListener('DOMContentLoaded', () =>
   fetchProducts()
