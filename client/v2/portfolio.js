@@ -155,10 +155,21 @@ selectShow.addEventListener('change', event => {
         currentProducts.sort((p1, p2) => Date.parse(p1.released) - Date.parse(p2.released));
         break;
       default :
-        render(currentProducts, currentPagination);
+        currentProducts;
         break;
     }
-    
+    switch(selectFilter.value){
+      case "filter-recent":
+        currentProducts=recent_product(currentProducts);
+       break;
+      case "filter-reasonable-price":
+         currentProducts=reasonable_price(currentProducts);
+       break;
+      default:
+        currentProducts;
+        break;
+    }
+   
   }).then(() => render(currentProducts, currentPagination));
 });
 
@@ -179,11 +190,22 @@ selectPage.addEventListener('change', event => {
         case "date-desc":
           currentProducts.sort((p1, p2) => Date.parse(p1.released) - Date.parse(p2.released));
           break;
-        default :
-          render(currentProducts, currentPagination);
+          default :
+          currentProducts;
           break;
       }
-      
+      switch(selectFilter.value){
+        case "filter-recent":
+          currentProducts=recent_product(currentProducts);
+         break;
+        case "filter-reasonable-price":
+           currentProducts=reasonable_price(currentProducts);
+         break;
+        default:
+          currentProducts;
+          break;
+      }
+
     }).then(() => render(currentProducts, currentPagination));
 });
 
@@ -204,10 +226,23 @@ selectBrand.addEventListener('change', event => {
       case "date-desc":
         currentProducts.sort((p1, p2) => Date.parse(p1.released) - Date.parse(p2.released));
         break;
-      default :
-        render(currentProducts, currentPagination);
+        default :
+        currentProducts;
         break;
     }
+    switch(selectFilter.value){
+      case "filter-recent":
+        currentProducts=recent_product(currentProducts);
+       break;
+      case "filter-reasonable-price":
+         currentProducts=reasonable_price(currentProducts);
+       break;
+      default:
+        currentProducts;
+        break;
+    }
+    
+
     
   }).then(() => render(currentProducts, currentPagination));
 
@@ -285,11 +320,8 @@ selectFilter.addEventListener('change',event =>{
     case "filter-reasonable-price":
        currentProducts=reasonable_price(currentProducts);
      break;
-    case " ":
+    default:
       break;
-
-
-    
   }
   render(currentProducts, currentPagination);
 
