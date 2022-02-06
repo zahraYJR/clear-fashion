@@ -18,6 +18,7 @@ const spanp50 =document.querySelector('#p50');
 const spanp90 =document.querySelector('#p90');
 const spanp95 =document.querySelector('#p95');
 
+// Let's go mega
 
 /**
  * Set global value
