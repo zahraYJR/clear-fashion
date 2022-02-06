@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
   </head>
@@ -23,6 +24,7 @@
         <div id="filter">
         <label for="filter-select">Filter:</label>
         <select name="filter" id="filter-select">
+          <option value=" ">Choose filter</option>
           <option value="filter-recent">Recent products</option>
           <option value="filter-reasonable-price">Reasonable prices</option>
         </select>
@@ -30,23 +32,23 @@
         <div id="brand">
           <label for="brand-select">By brands:</label>
           <select name="brand" id="brand-select">
+            <option value=''>Choose brand</option>
             <option value="loom">loom</option>
             <option value="coteleparis">coteleparis</option>
             <option value="adresse">adresse</option>
             <option value="1083">1083</option>
             <option value="dedicated">dedicated</option>
-            <option value=''>no_brand</option>
           </select>
         </div>
       </div>
       <div id="sort">
         <label for="sort-select">Sort:</label>
         <select name="sort" id="sort-select">
+          <option value=" ">Choose sorting</option>
           <option value="price-asc">Cheaper</option>
           <option value="price-desc">Expensive</option>
           <option value="date-asc">Recently released</option>
           <option value="date-desc">Anciently released</option>
-          <option value=" ">Choose sorting</option>
         </select>
       </div>
       
@@ -78,6 +80,7 @@
         <span>Last released date</span>
         <span>2020-01-01</span>
       </div>
+     
     </section>
     <section id="products"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
