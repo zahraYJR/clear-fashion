@@ -54,12 +54,23 @@
       <div id="sort">
         <label for="sort-select">Sort:</label>
         <select name="sort" id="sort-select">
+          <option value="no">No</option>
           <option value="price-asc">Cheaper</option>
           <option value="price-desc">Expensive</option>
           <option value="date-asc">Recently released</option>
           <option value="date-desc">Anciently released</option>
         </select>
       </div>
+
+      </div>
+      <div id="fav">
+        <label for="favori">Favori:</label>
+        <select name="fav" id="favori">
+          <option value="No">No Thanks</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>   
+
     </section>
     <section id="indicators">
       <h2>Indicators</h2>
@@ -85,7 +96,7 @@
       </div>
       <div>
         <span>Last released date</span>
-        <span>2020-01-01</span>
+        <span id = "last">spanlast</span>
       </div>
               
       <div>
