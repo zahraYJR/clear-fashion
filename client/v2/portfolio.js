@@ -4,7 +4,8 @@
 // current products on the page
 let currentProducts = [];
 let currentPagination = {};
-
+//let liste_favoris = [{"link":"https://www.loom.fr/collections/tous-les-vetements/products/le-hoodie","brand":"loom","price":90,"name":"Le hoodie","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_hoodie_durable_bleu_face_394x.jpg?v=1591698418","uuid":"084a85ed-bb99-5cb8-9170-d032480455bf","released":"2021-03-16"},{"link":"https://coteleparis.com/collections/tous-les-produits-cotele/products/la-baseball-cap-camel","brand":"coteleparis","price":45,"name":"BASEBALL CAP - CAMEL","photo":"//cdn.shopify.com/s/files/1/0479/7798/8261/products/IMG_5111_600x.jpg?v=1606912077","uuid":"5b036585-36f1-56a3-b87c-7660082045d4","released":"2021-12-21"},{"link":"https://www.loom.fr/collections/tous-les-vetements/products/la-chemise-vichy","brand":"loom","price":50,"name":"La chemise vichy","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_chemise_vichy_coton_rouge_face_1_394x.jpg?v=1605263024","uuid":"8a469325-fbac-50ec-9e0c-d26e1ee79c00","released":"2021-10-19"}]
+let liste_favoris = [];
 // inititiqte selectors
 const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
@@ -18,8 +19,8 @@ const spanp50 =document.querySelector('#p50');
 const spanp90 =document.querySelector('#p90');
 const spanp95 =document.querySelector('#p95');
 const selectSort = document.querySelector('#sort-select');
-
-
+const spanlast = document.querySelector('#last');
+const favoris = document.querySelector('#favori');
 // Let's go mega
 
 /**
@@ -39,7 +40,7 @@ const setCurrentProducts = ({result, meta}) => {
  * @param  {String}  [brand=""] - brand to filter
  * @return {Object}
  */
-const fetchProducts = async (page = 1, size = 12, brand = "", less50 = "No", recent = "No") => {
+const fetchProducts = async (page = 1, size = 12, brand = "", less50 = "No", recent = "No", sorted = "No") => {
   try {
     const response = await fetch(
       `https://clear-fashion-api.vercel.app?page=${page}&size=${size}&brand=${brand}`
@@ -58,6 +59,27 @@ const fetchProducts = async (page = 1, size = 12, brand = "", less50 = "No", rec
     if(recent != "No")
     {
       return recent_products_30(body);
+    }
+    if(sorted != "No")
+    {
+      if(sorted == 'price-asc')
+      {
+        body.data.result  = SortAsc(body.data.result);
+      }
+      else if(sorted == 'price-desc')
+      {
+        body.data.result  = SortDesc(body.data.result);
+      }
+      else if(sorted == 'date-asc')
+      {
+        body.data.result  = SortDateAsc(body.data.result);
+      }
+      else
+      {
+        body.data.result  = SortDateDesc(body.data.result);
+      }
+
+      return body.data;
     }
     return body.data;
   } catch (error) {
@@ -97,10 +119,31 @@ const recent_products_30 = (body) =>
   return body.data;
 }
 
+const products_sorted = (body) =>
+{
+  var today = new Date();
+  let listeprod = [];
+  for(let i =0; i<body.data.result.length;i++)
+  {
+    var date_produit = new Date(body.data.result[i].released);
+    var nbjours = Math.floor((today-date_produit)/(1000*60*60*24));
+    if(nbjours<=30)
+    {
+      listeprod.push(body.data.result[i]);
+    }
+  }
+  body.data.result = listeprod;
+  return body.data;
+}
+
 /**
  * Render list of products
  * @param  {Array} products
  */
+ // <button onclick="add_fav({"link" : "${product.link}","brand":"${product.brand}","price":"${product.price}","name":"${product.name}","uuid":"${product.uuid}","released":"${product.released}"})">Favori</button>
+
+ //${product.link},${product.brand},${product.price},${product.name},${product.uuid},${product.released}
+
 const renderProducts = products => {
   const fragment = document.createDocumentFragment();
   const div = document.createElement('div');
@@ -108,6 +151,7 @@ const renderProducts = products => {
     .map(product => {
       return `
       <div class="product" id=${product.uuid}>*
+      <button onclick="add_fav(${product.price})">Favori</button>
         <span>${product.brand}</span>
         <a href="${product.link}">${product.name}</a>
         <span>${product.price}</span>
@@ -191,6 +235,12 @@ const renderp95 = products => {
   spanp95.innerHTML=count;
 }
 
+const renderlast = products => {
+  let date_trie = SortDateDesc(products);
+  console.log(date_trie);
+  spanlast.innerHTML = date_trie[0].released;
+}
+
 const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
@@ -199,6 +249,7 @@ const render = (products, pagination) => {
   renderp50(products);
   renderp90(products);
   renderp95(products);
+  renderlast(products);
 };
 
 const SortAsc = (liste_a_trier) =>
@@ -215,7 +266,13 @@ const SortDesc = (liste_a_trier) =>
 
 const SortDateAsc = (liste_a_trier) =>
 {
-	let sort = liste_a_trier.sort((value1,value2) => b.date - a.date);
+	let sort = liste_a_trier.sort((value1,value2) => (value1.released > value2.released) ? 1:-1);
+	return sort;
+};
+
+const SortDateDesc = (liste_a_trier) =>
+{
+	let sort = liste_a_trier.sort((value1,value2) => (value1.released < value2.released) ? 1:-1);
 	return sort;
 };
 
@@ -225,6 +282,15 @@ const SortDateAsc = (liste_a_trier) =>
  * Declaration of all Listeners
  */
 
+//const add_fav = (link,brand,price,name,uuid,released) =>
+const add_fav = (price) =>
+{
+  console.log(brand);
+  console.log('OUI');
+  //liste_favoris.push(prod);
+  //console.log(liste_favoris);
+  console.log('non');
+};
 /**
  * Select the number of products to display
  * @type {[type]}
@@ -266,7 +332,21 @@ document.addEventListener('DOMContentLoaded', () =>
 );
 
 selectSort.addEventListener('change', event => {
-  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, event.target.value)
+  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, "", "No", "No", event.target.value)
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination));
+});
+
+
+favoris.addEventListener('change', event => {
+  if(event.target.value != 'No')
+  {
+    render(liste_favoris, currentPagination);
+  }
+  else{
+    fetchProducts(currentPagination.currentPage, currentPagination.pageSize)
+    .then(setCurrentProducts)
+    .then(() => render(currentProducts, currentPagination));
+  }
+
 });
