@@ -29,6 +29,7 @@ const selectPage = document.querySelector('#page-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
 const selectSort = document.querySelector('#sort-select');
+const spanp50Products=document.querySelector('#p50Products');
 
 /**
  * Set global value
@@ -118,10 +119,18 @@ const renderIndicators = pagination => {
   spanNbProducts.innerHTML = count;
 };
 
+//spanp50Products=500;
+const renderIndicator = pagination => {
+  const {count} = currentProducts.price.count;
+
+  spanp50Products.innerHTML = count;
+};
+
 const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
   renderIndicators(pagination);
+  renderIndicator(pagination);
 };
 
 /**
@@ -168,3 +177,5 @@ selectSort.addEventListener('change', event => {
   console.log(currentProducts);
   render(currentProducts,currentPagination);  //
 });
+
+
