@@ -5,7 +5,7 @@
 let currentProducts = [];
 let currentPagination = {};
 //let liste_favoris = [{"link":"https://www.loom.fr/collections/tous-les-vetements/products/le-hoodie","brand":"loom","price":90,"name":"Le hoodie","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_hoodie_durable_bleu_face_394x.jpg?v=1591698418","uuid":"084a85ed-bb99-5cb8-9170-d032480455bf","released":"2021-03-16"},{"link":"https://coteleparis.com/collections/tous-les-produits-cotele/products/la-baseball-cap-camel","brand":"coteleparis","price":45,"name":"BASEBALL CAP - CAMEL","photo":"//cdn.shopify.com/s/files/1/0479/7798/8261/products/IMG_5111_600x.jpg?v=1606912077","uuid":"5b036585-36f1-56a3-b87c-7660082045d4","released":"2021-12-21"},{"link":"https://www.loom.fr/collections/tous-les-vetements/products/la-chemise-vichy","brand":"loom","price":50,"name":"La chemise vichy","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_chemise_vichy_coton_rouge_face_1_394x.jpg?v=1605263024","uuid":"8a469325-fbac-50ec-9e0c-d26e1ee79c00","released":"2021-10-19"}]
-let liste_favoris = [];
+globalThis.liste_favoris = [];
 // inititiqte selectors
 const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
@@ -142,7 +142,6 @@ const products_sorted = (body) =>
  */
  // <button onclick="add_fav({"link" : "${product.link}","brand":"${product.brand}","price":"${product.price}","name":"${product.name}","uuid":"${product.uuid}","released":"${product.released}"})">Favori</button>
 
- //${product.link},${product.brand},${product.price},${product.name},${product.uuid},${product.released}
 
 const renderProducts = products => {
   const fragment = document.createDocumentFragment();
@@ -151,7 +150,7 @@ const renderProducts = products => {
     .map(product => {
       return `
       <div class="product" id=${product.uuid}>*
-      <button onclick="add_fav(${product.price})">Favori</button>
+        <button onclick="add_fav('${product.link}','${product.brand}','${product.price}','${product.name}','${product.uuid}', '${product.released}')">Favori</button>
         <span>${product.brand}</span>
         <a href="${product.link}">${product.name}</a>
         <span>${product.price}</span>
@@ -183,13 +182,6 @@ const renderPagination = pagination => {
 };
 /** create a function that uptade the favorite product */
 
-
-/**
-function refresh() {
-  fetchProducts(currentPagination.currentPage, currentPagination.pageSize)
-    .then(setCurrentProducts)
-    .then(() =>
-*/
 /**
  * Render page selector
  * @param  {Object} pagination
@@ -282,13 +274,12 @@ const SortDateDesc = (liste_a_trier) =>
  * Declaration of all Listeners
  */
 
-//const add_fav = (link,brand,price,name,uuid,released) =>
-const add_fav = (price) =>
+// {"link" : "${product.link}","brand":"${product.brand}","price":"${product.price}","name":"${product.name}","uuid":"${product.uuid}","released":"${product.released}"})">Favori</button>
+
+const add_fav = (link,brand,price,name,uuid,released) =>
 {
-  console.log(brand);
-  console.log('OUI');
-  //liste_favoris.push(prod);
-  //console.log(liste_favoris);
+  globalThis.liste_favoris.push({"link" : link,"brand":brand,"price":price,"name":name,"uuid":uuid,"released":released});
+  console.log(liste_favoris);
   console.log('non');
 };
 /**
