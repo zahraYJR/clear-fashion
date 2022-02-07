@@ -123,7 +123,7 @@ const renderIndicators = pagination => {
 
 const renderPCalculator = products => {
   currentProducts.sort((x,y) => x.price - y.price);
-  spanp50Products.innerHTML = (products[products.length*(50/100)-1].price+products[products.length*(50/100)-1].price)/2;
+  spanp50Products.innerHTML = (products[products.length*(50/100)-1].price+products[products.length*(50/100)].price)/2;
   spanp90Products.innerHTML = (products[Math.round(products.length*(90/100)+0.5)-1].price+products[Math.round(products.length*(90/100)-0.5)-1].price)/2;
   spanp95Products.innerHTML = (products[Math.round(products.length*(95/100)+0.5)-1].price+products[Math.round(products.length*(95/100)-0.5)-1].price)/2;
 
