@@ -30,6 +30,8 @@ const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
 const selectSort = document.querySelector('#sort-select');
 const spanp50Products=document.querySelector('#p50Products');
+const spanp90Products=document.querySelector('#p90Products');
+const spanp95Products=document.querySelector('#p95Products');
 
 /**
  * Set global value
@@ -119,18 +121,19 @@ const renderIndicators = pagination => {
   spanNbProducts.innerHTML = count;
 };
 
-//spanp50Products=500;
-const renderIndicator = pagination => {
-  const {count} = currentProducts.price.count;
+const renderPCalculator = products => {
+  currentProducts.sort((x,y) => x.price - y.price);
+  spanp50Products.innerHTML = products[products.length*(50/100)-1].price;
+  spanp90Products.innerHTML = (products[Math.round(products.length*(90/100)+0.5)-1].price+products[Math.round(products.length*(90/100)-0.5)-1].price)/2;
+  spanp95Products.innerHTML = (products[Math.round(products.length*(95/100)+0.5)-1].price+products[Math.round(products.length*(95/100)-0.5)-1].price)/2;
 
-  spanp50Products.innerHTML = count;
 };
 
 const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
   renderIndicators(pagination);
-  renderIndicator(pagination);
+  renderPCalculator(currentProducts)
 };
 
 /**
@@ -177,5 +180,3 @@ selectSort.addEventListener('change', event => {
   console.log(currentProducts);
   render(currentProducts,currentPagination);  //
 });
-
-
