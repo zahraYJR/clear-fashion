@@ -3,11 +3,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css"/>
   </head>
   <body>
     <h1>Clear fashion</h1>
-    <section id="options">
-      <div id="show">
+    <section id="options" class=header>
+      <div id="show" class="header_option">
+        <i data-feather="align-justify"></i>
         <label for="show-select">Show:</label>
         <select name="show" id="show-select">
           <option value="12">12</option>
@@ -15,24 +17,30 @@
           <option value="48">48</option>
         </select>
       </div>
-      <div id="page">
+      <div id="page" >
+        <i data-feather="book-open"></i>
         <label for="page-select">Go to page:</label>
         <select name="page" id="page-select"> </select>
       </div>
-      <div id="filters">
+      <div id="filters" >
+        <i data-feather="filter"></i>
         <span>Filters:</span>
-        <div id="price">
+        <div id="price" class="header-option">
+          <i data-feather="dollar-sign"></i>
           <button type="button" id="filter-price">By reasonable price</button>
         </div>
-        <div id="date">
+        <div id="date" class="header-option">
+          <i data-feather="clock"></i>
           <button type="button" id="filter-date">By recently released</button>
         </div>
-        <div id="brand">
+        <div id="brand" class="header-option">
+          <i data-feather="aperture"></i>
           <label for="brand-select">  By brands:</label>
           <select name="brand" id="brand-select"> </select>
         </div>
       </div>
-      <div id="sort">
+      <div id="sort" class="header-option">
+        <i data-feather="shuffle"></i>
         <label for="sort-select">Sort:</label>
         <select name="sort" id="sort-select">
           <option value="price-asc">Cheaper</option>
@@ -71,5 +79,9 @@
     </section>
     <section id="products"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace()
+  </script>
   </body>
 </html>

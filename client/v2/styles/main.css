@@ -1,0 +1,20 @@
+body{
+	margin: 0;
+	font-family: sans-serif;
+	margin-right: 40px;
+	margin-left: 40px;	
+	background-image: url('fashion.png');
+}
+body h1 { 
+	color: #019AFE; 
+	font-weight: 600px;
+}
+.header-option{
+	display: flex;
+	align-items: center;
+	padding-left: 5rem;
+	letter-spacing: 0.6px;
+}
+.header {
+	font-weight: bold;
+}

@@ -190,7 +190,7 @@ filterByPrice.onclick=function(){
 
 filterByDate.onclick=function(){
   currentProducts=currentProducts.filter(a=>
-    Math.abs(new Date(a.released.split('-')[0],a.released.split('-')[1],a.released.split('-')[2])-Date.now())>1209600000
+    Math.abs(new Date(a.released)-Date.now())>12096e5
   );
   render(currentProducts,currentPagination);
 };
