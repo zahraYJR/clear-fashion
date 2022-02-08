@@ -5,33 +5,43 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
   </head>
+
   <body>
+
+
+
     <h1>Clear fashion</h1>
     <div class="header-img"></div>
+
+
+
     <section id="options">
       <div id="show">
-        <label for="show-select">Show:</label>
+        <label for="show-select">Show: </label>
         <select name="show" id="show-select">
           <option value="12">12</option>
           <option value="24">24</option>
           <option value="48">48</option>
         </select>
       </div>
+
       <div id="page">
-        <label for="page-select">Go to page:</label>
+        <label for="page-select">Go to page: </label>
         <select name="page" id="page-select"> </select>
       </div>
+
       <div id="filters">
         <div id="filter">
-        <label for="filter-select">Filter:</label>
-        <select name="filter" id="filter-select">
-          <option value=" ">Choose filter</option>
-          <option value="filter-recent">Recent products</option>
-          <option value="filter-reasonable-price">Reasonable prices</option>
-        </select>
+          <label for="filter-select">Filter: </label>
+          <select name="filter" id="filter-select">
+            <option value=" ">Choose filter</option>
+            <option value="filter-recent">Recent products</option>
+            <option value="filter-reasonable-price">Reasonable prices</option>
+          </select>
         </div>
+
         <div id="brand">
-          <label for="brand-select">By brands:</label>
+          <label for="brand-select">By brands: </label>
           <select name="brand" id="brand-select">
             <option value=''>Choose brand</option>
             <option value="loom">loom</option>
@@ -42,8 +52,9 @@
           </select>
         </div>
       </div>
+
       <div id="sort">
-        <label for="sort-select">Sort:</label>
+        <label for="sort-select">Sort: </label>
         <select name="sort" id="sort-select">
           <option value=" ">Choose sorting</option>
           <option value="price-asc">Cheaper</option>
@@ -52,9 +63,10 @@
           <option value="date-desc">Anciently released</option>
         </select>
       </div>
-      
-
     </section>
+
+
+
     <section id="indicators">
       <h2>Indicators</h2>
       <div>
@@ -63,27 +75,30 @@
       </div>
       <div>
         <span>Number of new products</span>
-        <span>0</span>
+        <span id="nbNewProducts">0</span>
       </div>
       <div>
         <span>p50 price value</span>
-        <span>0</span>
+        <span id="p50PriceValue">0</span>
       </div>
       <div>
         <span>p90 price value</span>
-        <span>0</span>
+        <span id="p90PriceValue">0</span>
       </div>
       <div>
         <span>p95 price value</span>
-        <span>0</span>
+        <span id="p95PriceValue">0</span>
       </div>
       <div>
         <span>Last released date</span>
-        <span>2020-01-01</span>
+        <span id="lastReleasedDate">2020-01-01</span>
       </div>
-     
     </section>
+
+    
+
     <section id="products"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
+
   </body>
 </html>
