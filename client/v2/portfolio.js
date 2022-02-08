@@ -11,9 +11,9 @@ const selectPage = document.querySelector('#page-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts'); //Nb of products
 const selectSort = document.querySelector('#sort-select');
-const spanp50Products = document.querySelector('#p50Products'); //50 price value
-const spanp90Products = document.querySelector('#p90Products'); //90 price value
-const spanp95Products = document.querySelector('#p95Products'); //95 price value
+const spanp50Products = document.querySelector('#p50'); //50 price value
+const spanp90Products = document.querySelector('#p90'); //90 price value
+const spanp95Products = document.querySelector('#p95'); //95 price value
 
 /**
  * Set global value
