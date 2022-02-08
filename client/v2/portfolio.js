@@ -10,7 +10,6 @@ let FavoriteProduct = false;
 let favoritesProducts =[];
 
 
-
 // inititiqte selectors
 const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
@@ -19,7 +18,6 @@ const selectFilter = document.querySelector('#filter-select');
 const selectSort = document.querySelector('#sort-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
-const onclick  = document.querySelector('#favorite-product');
 
 /**
  * Set global value
@@ -80,7 +78,7 @@ const renderProducts = products => {
           <span>Price : </span>
           <strong>${product.price} €</strong>
         <div>
-          <input type="checkbox" onclick="checkFavorite('${product.uuid}')" >
+          <input type="checkbox" id="myCheck" onchange="checkFavorite('${product.uuid}')" >
           <label for="favorite-product">Add to favorite</label>
         </div>
       </div>
@@ -93,23 +91,35 @@ const renderProducts = products => {
     else div.innerHTML = "0 product correspond to these filters on this page";
   fragment.appendChild(div);
   sectionProducts.innerHTML = '<h2>Products</h2>';
-  sectionProducts.appendChild(fragment);
+    sectionProducts.appendChild(fragment);
 };
 
-// function checkFavorite(_uuid)
-// {
-//   favoritesProducts.push(_uuid);
+function removeItemAll(arr, value) {
+  var i = 0;
+  while (i < arr.length) {
+    if (arr[i] === value) {
+      arr.splice(i, 1);
+    } else {
+      ++i;
+    }
+  }
+  return arr;
+}
 
-//   for (let i = 0; i < favoritesProducts.length; i++) 
-//   {
-//    if(favoritesProducts.includes(_uuid)){favoritesProducts.remove(_uuid);} 
-//     console.log(favoritesProducts[i]);
+function checkFavorite(_uuid)
+{
+  if(favoritesProducts.includes(_uuid)){
+    removeItemAll(favoritesProducts,_uuid);
+  }
+  else{
+    favoritesProducts.push(_uuid);
+    document.getElementById("myCheck").checked = true
+    
+  }
+  window.localStorage.setItem('favorites', JSON.stringify(favoritesProducts));
+  return favoritesProducts;
 
-//   }
-  
-// }
-
-
+}
 
 /**
  * Render page selector
