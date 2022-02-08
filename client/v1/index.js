@@ -257,3 +257,8 @@ blueJacket = {
 // 🎯 TODO: Save in localStorage
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
+<<<<<<< Updated upstream
+=======
+localStorage.setItem("MY_FAVORITE_BRANDS",json.stringify(MY_FAVORITE_BRANDS));
+console.log(localStorage);
+>>>>>>> Stashed changes

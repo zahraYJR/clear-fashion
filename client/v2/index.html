@@ -5,7 +5,7 @@
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
   </head>
   <body>
-    <h1>Clear fashion</h1>
+    <h1>CLEAR FASHION</h1>
     <section id="options">
       <div id="show">
         <label for="show-select">Show:</label>
@@ -20,12 +20,45 @@
         <select name="page" id="page-select"> </select>
       </div>
       <div id="filters">
+<<<<<<< Updated upstream
         <span>By reasonable price</span>
         <span>By recently released</span>
         <div id="brand">
           <label for="brand-select">By brands:</label>
           <select name="brand" id="brand-select"> </select>
         </div>
+=======
+
+        <div id="brand">
+          <label for="brand-select">By brands:</label>
+          <select name="brand" id="brand-select">
+            // change to be dynamic
+            <option value=""></option>
+            <option value="coteleparis">coteleparis</option>
+            <option value="loom">loom</option>
+            <option value="adresse">adresse</option>
+            <option value="dedicated">dedicated</option>
+            <option value="1083">1083</option>  
+          </select>
+        </div>
+
+        <div id="released">
+          <label for="recently-released">Recently-released</label>
+          <select name="released" id="recently-released">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+
+        <div id="price-50">
+          <label for="price-less50">Reasonable price</label>
+          <select name="price-50" id="price-less50">
+            <option value="No">No</option>
+            <option value="Yes less than 50 euros">Yes less than 50 euros</option>
+          </select>
+        </div>
+
+>>>>>>> Stashed changes
       </div>
       <div id="sort">
         <label for="sort-select">Sort:</label>
@@ -49,19 +82,24 @@
       </div>
       <div>
         <span>p50 price value</span>
-        <span>0</span>
+        <span id="p50">spanp50</span>
       </div>
       <div>
         <span>p90 price value</span>
-        <span>0</span>
+        <span id="p90">spanp90</span>
       </div>
       <div>
         <span>p95 price value</span>
-        <span>0</span>
+        <span id="p95">spanp95</span>
       </div>
       <div>
         <span>Last released date</span>
         <span>2020-01-01</span>
+      </div>
+              
+      <div>
+        <span>Count Recently released</span>
+        <span id="count-recently-released">spancountRecentlyReleased</span>
       </div>
     </section>
     <section id="products"></section>
