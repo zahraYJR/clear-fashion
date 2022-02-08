@@ -223,7 +223,7 @@ function recent_product(arr)
   {
     var date = new Date(arr[i].released);
     //console.log("Released",arr[i].released)
-    date=addDaysToDate(date,20);
+    date=addDaysToDate(date,30);
     var date2=new Date();
     if(date>date2){
       list.push(arr[i]);
