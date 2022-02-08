@@ -1,0 +1,74 @@
+body{
+    background-color: rgb(95, 140, 155);
+    color: white;
+}
+
+
+h1 {
+    font-family: 'Dancing Script';
+	font-size: 60px;
+    position: absolute;
+    margin-top: 40pt;
+    left: 50%;
+    transform: translateX(-50%); 
+    color: rgb(185, 77, 77);
+
+    
+}
+.header-img {
+    opacity: 0.3;
+    background-image: url('https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_auto/1202780/514169_934066.png');
+    height: 296px;
+    width: 100%;
+    position: relative;
+  }
+
+#options{
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Dancing Script';
+  color: white;
+}
+
+#show{
+    float:left; 
+    text-align: center;
+    font-size:20px;  
+    padding: 10px 20px;  
+} 
+#page{
+    float: left;
+    text-align: center;
+    font-size:20px;  
+    padding: 10px 20px;  
+}
+#filter{
+    float: left;
+    text-align: center;
+    font-size:20px;  
+    padding: 10px 20px;  
+}
+#brand{
+    float: left;
+    text-align: center;
+    font-size:20px;  
+    padding: 10px 20px;  
+} 
+#sort{
+    float: left;
+    text-align: center;
+    font-size:20px;  
+    padding: 10px 20px;  
+}
+
+
+
+.product{
+    text-align: center;
+    margin-bottom: 2em;
+    border: 2px solid rgb(194, 96, 96); padding: 5px; 
+    box-shadow: 0 3px 20px 0 #0000003b;
+    border-radius : 10% / 60%;
+    background-clip: content-box;
+}
+/* background-color: rgb(95, 140, 155); */
