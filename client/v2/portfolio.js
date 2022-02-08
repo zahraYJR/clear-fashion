@@ -16,8 +16,8 @@ const sectionProducts = document.querySelector('#products');
 //Filters
 const selectFilterRecentProducts = document.querySelector('#filter-date-select')
 const selectFilterReasonablePrice = document.querySelector('#filter-price-select')
-const selectFilterPriceBetween50_100 = ('#filter-price-between-50-and-100-select')
-const selectFilterPriceAbove100 = ('#filter-price-above-100-select')
+const selectFilterPriceBetween50_100 = document.querySelector('#filter-price-between-50-and-100-select')
+const selectFilterPriceAbove100 = document.querySelector('#filter-price-above-100-select')
 const selectBrand = document.querySelector('#brand-select');
 
 //Sort
@@ -332,8 +332,7 @@ function FilterByBrand(currentProducts, brandName)
         {
             filteredProducts.push(product)
         }
-    }
-    
+    } 
     return filteredProducts
 }
 
@@ -365,7 +364,6 @@ function FilterByReleasedDate(currentProducts, selector) {
             }
         }
     }
-
     return filtered_products
 }
 
@@ -393,19 +391,18 @@ function FilterByReasonablePrice(currentProducts, instruction) {
     {
         for (var product of currentProducts) 
         {
-            console.log(product.price);
+            //console.log(product.price);
             if (product.price <= 50) 
             {
                 filteredProducts.push(product)
             }
         }
     }
-
     return filteredProducts
 }
 
 
-/*
+
 // Filter by prices between 50€ and 100€
 selectFilterPriceBetween50_100.addEventListener('change', event => {
     fetchProducts(currentPagination.currentPage, currentPagination.pageSize)
@@ -413,28 +410,27 @@ selectFilterPriceBetween50_100.addEventListener('change', event => {
         .then(() => render(FilterByPriceBetween50_100(currentProducts, event.target.value), currentPagination));
   })
   
-  function FilterByPriceBetween50_100(currentProducts, instruction) 
-  {
+function FilterByPriceBetween50_100(currentProducts, instruction) 
+{
     var filtered_products = []
     if (instruction == "no_filter") 
     {
-      filtered_products = [...currentProducts]
+        filtered_products = [...currentProducts]
     }
     else 
     {
-      for (var product of currentProducts) 
-      {
-        console.log(product.price);
-        if ((product.price > 50) && (product.price <= 100)) 
+        for (var product of currentProducts) 
         {
-          filtered_products.push(product)
+            //console.log(product.price);
+            if ((product.price > 50) && (product.price <= 100)) 
+            {
+                filtered_products.push(product)
+            }
         }
-      }
     }
-  
-    return filtered_products
-  }
-  
+return filtered_products
+}
+ 
   
   // Filter by prices above 100€
   selectFilterPriceAbove100.addEventListener('change', event => {
@@ -461,10 +457,8 @@ selectFilterPriceBetween50_100.addEventListener('change', event => {
         }
       }
     }
-  
     return filtered_products
   }
-*/
 
 
 
@@ -587,11 +581,8 @@ function FilterByFavorite(currentProducts, instruction)
             }
         }
     }
-
     return filteredProducts
 }
-
-
 
 
 /**
