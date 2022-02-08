@@ -614,13 +614,11 @@ const refresh = () => {
 // Supprimer toutes les options sélectionnées
 function ResetOptions()
 {
-    /*
-    selectFilterRecentProducts.innerHTML = "No";
-    selectFilterReasonablePrice.innerHTML = "No";
-    selectFilterPriceBetween50_100.innerHTML = "No";
-    selectFilterPriceAbove100.innerHTML = "No";
-    selectBrand.innerHTML = "All";
-    selectSort.innerHTML = "No Sorting";
-    refresh();
-    */
+    selectFilterRecentProducts.value = "no_filter";
+    selectFilterReasonablePrice.value = "no_filter";
+    selectFilterPriceBetween50_100.value = "no_filter";
+    selectFilterPriceAbove100.value = "no_filter";
+    selectBrand.value = "All";
+    selectSort.value = "no_sort";  
+    selectFilterFavorite.value = "no_filter";
 }
