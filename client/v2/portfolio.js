@@ -108,6 +108,9 @@ const renderIndicatorsAllProducts = ()=>{
   newProducts = recent_product(allProducts);
   console.log("New products", newProducts);
   spanNbNewProducts.innerHTML = newProducts.length;
+  spanP50PriceValue.innerHTML = p50_value(allProducts) + " €";
+  spanP90PriceValue.innerHTML = p90_value(allProducts) + " €";
+  spanP95PriceValue.innerHTML = p95_value(allProducts) + " €";
   spanLastReleasedDate.innerHTML = last_released_date(allProducts);
 }
 
@@ -248,6 +251,31 @@ function last_released_date(arr){
     }
   })
   return(maxDate);
+}
+
+function sort_by_price_asc(array_to_sort){
+  var sort_by_price = array_to_sort.sort((a, b) => a.price - b.price);
+  var product_list = [];
+  sort_by_price.forEach(element => product_list.push(element.price));
+  return product_list;
+}
+
+function p50_value(arr){
+  let products_by_price = sort_by_price_asc(arr);
+  var index = Math.round(products_by_price.length*0.5);
+  return(products_by_price[index]);
+}
+
+function p90_value(arr){
+  let products_by_price = sort_by_price_asc(arr);
+  var index = Math.round(products_by_price.length*0.9);
+  return(products_by_price[index]);
+}
+
+function p95_value(arr){
+  let products_by_price = sort_by_price_asc(arr);
+  var index = Math.round(products_by_price.length*0.95);
+  return(products_by_price[index]);
 }
 
 
