@@ -35,7 +35,8 @@ console.log(MY_FAVORITE_BRANDS[0]);
 let lien_moins_cher = 'https://www.loom.fr/collections/tous-les-vetements/products/le-t-shirt';
 console.log(lien_moins_cher);
 
-
+console.log('test');
+console.log('tesr2');
 
 /**
  * 👕

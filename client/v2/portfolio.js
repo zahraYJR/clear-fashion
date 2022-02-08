@@ -5,6 +5,8 @@
 let currentProducts = [];
 let currentPagination = {};
 
+//let liste_favoris = [{"link":"https://www.loom.fr/collections/tous-les-vetements/products/le-hoodie","brand":"loom","price":90,"name":"Le hoodie","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_hoodie_durable_bleu_face_394x.jpg?v=1591698418","uuid":"084a85ed-bb99-5cb8-9170-d032480455bf","released":"2021-03-16"},{"link":"https://coteleparis.com/collections/tous-les-produits-cotele/products/la-baseball-cap-camel","brand":"coteleparis","price":45,"name":"BASEBALL CAP - CAMEL","photo":"//cdn.shopify.com/s/files/1/0479/7798/8261/products/IMG_5111_600x.jpg?v=1606912077","uuid":"5b036585-36f1-56a3-b87c-7660082045d4","released":"2021-12-21"},{"link":"https://www.loom.fr/collections/tous-les-vetements/products/la-chemise-vichy","brand":"loom","price":50,"name":"La chemise vichy","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_chemise_vichy_coton_rouge_face_1_394x.jpg?v=1605263024","uuid":"8a469325-fbac-50ec-9e0c-d26e1ee79c00","released":"2021-10-19"}]
+
 globalThis.liste_favoris = [];
 // inititiqte selectors
 const selectShow = document.querySelector('#show-select');

@@ -21,21 +21,56 @@
       </div>
       <div id="filters">
         <span>By reasonable price</span>
-        <span>By recently released</span>
+
         <div id="brand">
           <label for="brand-select">By brands:</label>
-          <select name="brand" id="brand-select"> </select>
+          <select name="brand" id="brand-select">
+            <option value=""></option>
+            <option value="coteleparis">coteleparis</option>
+            <option value="loom">loom</option>
+            <option value="adresse">adresse</option>
+            <option value="dedicated">dedicated</option>
+            <option value="1083">1083</option>  
+          </select>
         </div>
+
+        <div id="released">
+          <label for="recently-released">Recently-released</label>
+          <select name="released" id="recently-released">
+            <option value="No">No thanks</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+
+        <div id="price-50">
+          <label for="price-less50">Prix inférieur à 50€</label>
+          <select name="price-50" id="price-less50">
+            <option value="No">No thanks</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+
       </div>
       <div id="sort">
         <label for="sort-select">Sort:</label>
         <select name="sort" id="sort-select">
+          <option value="no">No</option>
           <option value="price-asc">Cheaper</option>
           <option value="price-desc">Expensive</option>
           <option value="date-asc">Recently released</option>
           <option value="date-desc">Anciently released</option>
         </select>
       </div>
+
+      </div>
+      <div id="fav">
+        <label for="favori">Favori:</label>
+        <select name="fav" id="favori">
+          <option value="No">No Thanks</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>   
+
     </section>
     <section id="indicators">
       <h2>Indicators</h2>
@@ -49,19 +84,24 @@
       </div>
       <div>
         <span>p50 price value</span>
-        <span>0</span>
+        <span id="p50">spanp50</span>
       </div>
       <div>
         <span>p90 price value</span>
-        <span>0</span>
+        <span id="p90">spanp90</span>
       </div>
       <div>
         <span>p95 price value</span>
-        <span>0</span>
+        <span id="p95">spanp95</span>
       </div>
       <div>
         <span>Last released date</span>
-        <span>2020-01-01</span>
+        <span id = "last">spanlast</span>
+      </div>
+              
+      <div>
+        <span>Count Recently released</span>
+        <span id="count-recently-released">spancountRecentlyReleased</span>
       </div>
     </section>
     <section id="products"></section>
