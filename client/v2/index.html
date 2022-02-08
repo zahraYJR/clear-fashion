@@ -27,15 +27,21 @@
           <select name="brand" id="brand-select"> </select>
         </div>
       </div>
+
+    <!-- Sort section -->
+
       <div id="sort">
         <label for="sort-select">Sort:</label>
-        <select name="sort" id="sort-select">
-          <option value="price-asc">Cheaper</option>
-          <option value="price-desc">Expensive</option>
-          <option value="date-asc">Recently released</option>
-          <option value="date-desc">Anciently released</option>
+        <select name="sort" id="sort-select">  
+          <option value="cheaper">Cheaper</option>
+          <option value="expensive">Expensive</option>
+          <option value="recently_released">Recently released</option>
+          <option value="anciently_released">Anciently released</option>
         </select>
       </div>
+
+    <!-- Indicator section - Showing the number of product and the p50, p90 and p95 -->
+
     </section>
     <section id="indicators">
       <h2>Indicators</h2>
@@ -49,20 +55,23 @@
       </div>
       <div>
         <span>p50 price value</span>
-        <span>0</span>
+        <span id="p50Products">0</span>
       </div>
       <div>
         <span>p90 price value</span>
-        <span>0</span>
+        <span id="p90Products">0</span>
       </div>
       <div>
         <span>p95 price value</span>
-        <span>0</span>
+        <span id="p95Products"></span>
       </div>
       <div>
         <span>Last released date</span>
         <span>2020-01-01</span>
       </div>
+
+    <!-- Product Section - Showing the products -->
+
     </section>
     <section id="products"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
