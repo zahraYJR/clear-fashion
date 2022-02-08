@@ -76,18 +76,24 @@ const fetchProducts = async (page = 1, size = 12) => {
  */
 const renderProducts = products => {
   const fragment = document.createDocumentFragment();
-  const div = document.createElement('div');
-  const template = products
+  const div = document.createElement('table');
+  const template = `
+  <table border="10"> 
+  <tr>
+    <th>BRAND</th>
+    <th>LINK</th>
+    <th>PRICE</th>
+  </tr>`+products
     .map(product => {
       return `
-      <div class="product" id=${product.uuid}>
-        <span>${product.brand}</span>
-        <a href="${product.link}">${product.name}</a>
-        <span>${product.price}</span>
-      </div>
+      <tr>
+        <td>${product.brand}</td>
+        <td> <a href="${product.link}">${product.name}</a> </td>
+        <td>${product.price}</td>
+      </tr>
     `;
     })
-    .join('');
+    .join('')+`</table>`;
 
 
   div.innerHTML = template;
