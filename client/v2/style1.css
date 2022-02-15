@@ -1,0 +1,32 @@
+h4
+{
+    color:red;
+}
+
+h1{
+    color:orange;
+    font-family: Impact;
+}
+
+h2{
+    color:pink;
+}
+
+img {
+    width : 50px;
+    height : 50px;
+    position: absolute;
+    top: 15px;
+    left: 190px;    
+    }
+
+table{
+    border: orange;
+    border-style:double;
+}
+
+
+th{
+    font-family: Impact;
+    color:darkmagenta;
+}
