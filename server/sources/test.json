@@ -1,0 +1,42 @@
+[
+	{
+		"name": "T-SHIRT BLASON",
+		"price": 50
+	},
+	{
+		"name": "PULL DURABLE",
+		"price": 130
+	},
+	{
+		"name": "CHEMISE MONTLIMART",
+		"price": 95
+	},
+	{
+		"name": "ESPADRILLES ESPAGREEN",
+		"price": 65
+	},
+	{
+		"name": "T-SHIRT ESSAIM",
+		"price": 45
+	},
+	{
+		"name": "BOOTS MONTPLUIE",
+		"price": 85
+	},
+	{
+		"name": "ESPADRILLES ESPAGREEN",
+		"price": 65
+	},
+	{
+		"name": "CHAUSSETTES MONTLISOCKS",
+		"price": 15
+	},
+	{
+		"name": "CHEMISE SAINT PAUL",
+		"price": 150
+	},
+	{
+		"name": "CHEMISE SURTOUT",
+		"price": 100
+	}
+]
