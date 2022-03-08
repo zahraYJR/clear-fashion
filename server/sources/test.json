@@ -1,42 +1,202 @@
 [
 	{
-		"name": "T-SHIRT BLASON",
-		"price": 50
+		"name": "Joggers Lund Dedicated Logo Charcoal",
+		"price": 69,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "PULL DURABLE",
-		"price": 130
+		"name": "T-shirt Stockholm Anything Off-White",
+		"price": 39,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "CHEMISE MONTLIMART",
-		"price": 95
+		"name": "T-shirt Stockholm Forbidden Fruit Off-White",
+		"price": 39,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "ESPADRILLES ESPAGREEN",
-		"price": 65
+		"name": "Jacket Hoddevik Beige",
+		"price": 199,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "T-SHIRT ESSAIM",
-		"price": 45
+		"name": "Jacket Hoddevik Leaf Green",
+		"price": 199,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "BOOTS MONTPLUIE",
-		"price": 85
+		"name": "Shirt Sandefjord Sea Turtles Off-White",
+		"price": 79,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "ESPADRILLES ESPAGREEN",
-		"price": 65
+		"name": "Shirt Varberg Sea Turtles Off-White",
+		"price": 89,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "CHAUSSETTES MONTLISOCKS",
-		"price": 15
+		"name": "Cardigan Molkom Waves Off-White",
+		"price": 99,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "CHEMISE SAINT PAUL",
-		"price": 150
+		"name": "T-shirt Stockholm Work Hard Pizza White",
+		"price": 39,
+		"brand": "dedicatedbrand"
 	},
 	{
-		"name": "CHEMISE SURTOUT",
-		"price": 100
+		"name": "T-shirt Stockholm What I Saw White",
+		"price": 39,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Bike Crowd Off-White",
+		"price": 39,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm We Love Sumo White",
+		"price": 39,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Beach Honey Yellow",
+		"price": 39,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Beach Off-White",
+		"price": 39,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Human Zoo Off-White",
+		"price": 39,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Human Zoo Mint",
+		"price": 39,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Mandela Smile White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Turnip the Beet White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Your Mama Charcoal",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Your Mama Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Wish Vegan Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Eat Beans Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Team Herbivore Charcoal",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Team Herbivore White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "Hoodie Falun Marker Bike Grey Melange",
+		"price": 79,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Sea Turtles Forest Green",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Save The Whales Honey Yellow",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Save The Whales Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Plastic Free Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Plastic Free Charcoal",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Cut Waves Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Crayon Globe Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm All Natural White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Pawsitivity Off-White",
+		"price": 34,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Base Honey Yellow",
+		"price": 29,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Base Steel Blue",
+		"price": 29,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "T-shirt Stockholm Base Terracotta Red",
+		"price": 29,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "Sweatshorts Halmstad Dedicated Logo Black",
+		"price": 59,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "Boxer Briefs Kalix Sea Turtles Forest Green",
+		"price": 24,
+		"brand": "dedicatedbrand"
+	},
+	{
+		"name": "Boxer Briefs Kalix Waves Navy",
+		"price": 24,
+		"brand": "dedicatedbrand"
 	}
 ]

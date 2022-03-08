@@ -7,11 +7,11 @@ const shop1='https://www.dedicatedbrand.com/en/men/all-men';
 const shop2='https://www.montlimart.com/toute-la-collection.html';
 const shop3='https://adresse.paris/630-toute-la-collection';
 
-async function sandbox (eshop=shop2) {
+async function sandbox (eshop,web) {
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} source`);
 
-    const products = await montlimart.scrape(eshop);
+    const products = await web.scrape(eshop);
     for(let i=0;i<products.length;i++){
       if(isNaN(products[i].price)){
         products.splice(i,1);
@@ -25,8 +25,17 @@ async function sandbox (eshop=shop2) {
           }
         }
       }
+      if(eshop.toString().includes("dedicatedbrand")){
+        products[i].brand="dedicatedbrand";
+      }else{
+        if(eshop.toString().includes("montlimart")){
+          products[i].brand="montlimart";
+        }else{
+          products[i].brand="adresseParis";
+        }
+      }
     }
-    fs.writeFileSync('./sources/test.json',JSON.stringify(products,null,'\t'));
+    fs.writeFileSync('./sources/test.json', JSON.stringify(products,null,'\t'),'utf8',0o666,'as');
     console.log(products);
     console.log('done');
     process.exit(0);
@@ -34,8 +43,8 @@ async function sandbox (eshop=shop2) {
     console.error(e);
     process.exit(1);
   }
-}
+};
 
 const [,,eshop] = process.argv;
 
-sandbox(eshop);
+sandbox(shop1,dedicatedbrand);
