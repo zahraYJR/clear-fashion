@@ -9,26 +9,22 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
 
-  return $('.productList-container .productList')
+  return $('.ajax_block_product .product-container')
     .map((i, element) => {
       const name = $(element)
-        .find('.productList-title')
-        .text()
-        .trim()
-        .replace(/\s/g, ' ');
-      const brand = 'dedicated';
-      const price = parseFloat(
-        $(element)
-          .find('.productList-price')
-          .text()
-      );
-      const url = 'https://www.dedicatedbrand.com' + $(element)
-        .find('.productList-link')
+        .find('.product-name')
+        .attr('title');
+      const brand = 'adresse paris';
+      const price = parseFloat($(element)
+        .find('.price')
+        .text());
+      const url = $(element)
+        .find('.product-name')
         .attr('href');
       const image = $(element)
-        .find('.productList-image')
-        .find('img')
-        .attr('data-src');
+      .find('.product_img_link')
+      .find('img')
+      .attr('data-original');
 
       return {name, brand, price, image, url};
     })

@@ -2,14 +2,11 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="/client/v2/style1.css" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>
-      <img src="/logo.jpg" alt="Photo" />
-           Clear fashion
-    </h1>
+    <h1>Clear fashion</h1>
     <section id="options">
       <div id="show">
         <label for="show-select">Show:</label>
@@ -23,20 +20,19 @@
         <label for="page-select">Go to page:</label>
         <select name="page" id="page-select"> </select>
       </div>
-      <div id="by">
-        <label for="by-filter">By:</label>
-        <select name="by" id="by-filter">
-          <option value="rea-price">Reasonable price</option>
-          <option value="rec-released">Recently released</option>
-        </select>
-      </div>
-      <div id="brand">
-        <label for="brand-filter">By brands:</label>
-        <select name="brand" id="brand-select">
-          <option value="12">12</option>
-          <option value="24">24</option>
-          <option value="48">48</option>
-        </select>
+      <div id="filters">
+		<div id="box-price">
+			<label for="price-check">By reasonable price:</label>
+			<input type="checkbox" id="price-check">
+		</div>
+		<div id="box-released">
+			<label for="released-check">By recently released:</label>
+			<input type="checkbox" id="released-check">
+		</div>
+        <div id="brand">
+          <label for="brand-select">By brands:</label>
+          <select name="brand" id="brand-select"> </select>
+        </div>
       </div>
       <div id="sort">
         <label for="sort-select">Sort:</label>
@@ -45,40 +41,39 @@
           <option value="price-desc">Expensive</option>
           <option value="date-asc">Recently released</option>
           <option value="date-desc">Anciently released</option>
+		  <option value="fav">Favorites</option>
         </select>
       </div>
     </section>
     <section id="indicators">
       <h2>Indicators</h2>
       <div>
-        <span>Number of products</span>
+        <span>Number of products:</span>
         <span id="nbProducts">0</span>
       </div>
       <div>
-        <span>Number of new products</span>
-        <span>0</span>
+        <span>Number of new products:</span>
+        <span id="nbNewProducts">0</span>
       </div>
       <div>
-        <span>p50 price value</span>
-        <span id="p50Products">0</span>
+        <span>p50 price value:</span>
+        <span id="p50">0</span>
       </div>
       <div>
-        <span>p90 price value</span>
-        <span id="p90Products">0</span>
+        <span>p90 price value:</span>
+        <span id="p90">0</span>
       </div>
       <div>
-        <span>p95 price value</span>
-        <span id="p95Products">0</span>
+        <span>p95 price value:</span>
+        <span id="p95">0</span>
       </div>
       <div>
-        <span>Last released date</span>
-        <span>2020-01-01</span>
+        <span>Last released date:</span>
+        <span id="lastReleased">2020-01-01</span>
       </div>
     </section>
     <section id="products"></section>
+	<section id="favorites"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
   </body>
-  <footer>
-    <h4>by Enard Lucas, Dumenil Léopold, El Atrache Oussama, Fay De Lestrac Thibault</h4>
-  </footer>
 </html>
