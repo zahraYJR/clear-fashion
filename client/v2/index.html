@@ -2,10 +2,14 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/client/v2/style1.css" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
   </head>
   <body>
-    <h1>Clear fashion</h1>
+    <h1>
+      <img src="/logo.jpg" alt="Photo" />
+           Clear fashion
+    </h1>
     <section id="options">
       <div id="show">
         <label for="show-select">Show:</label>
@@ -19,13 +23,20 @@
         <label for="page-select">Go to page:</label>
         <select name="page" id="page-select"> </select>
       </div>
-      <div id="filters">
-        <span>By reasonable price</span>
-        <span>By recently released</span>
-        <div id="brand">
-          <label for="brand-select">By brands:</label>
-          <select name="brand" id="brand-select"> </select>
-        </div>
+      <div id="by">
+        <label for="by-filter">By:</label>
+        <select name="by" id="by-filter">
+          <option value="rea-price">Reasonable price</option>
+          <option value="rec-released">Recently released</option>
+        </select>
+      </div>
+      <div id="brand">
+        <label for="brand-filter">By brands:</label>
+        <select name="brand" id="brand-select">
+          <option value="12">12</option>
+          <option value="24">24</option>
+          <option value="48">48</option>
+        </select>
       </div>
       <div id="sort">
         <label for="sort-select">Sort:</label>
@@ -49,15 +60,15 @@
       </div>
       <div>
         <span>p50 price value</span>
-        <span>0</span>
+        <span id="p50Products">0</span>
       </div>
       <div>
         <span>p90 price value</span>
-        <span>0</span>
+        <span id="p90Products">0</span>
       </div>
       <div>
         <span>p95 price value</span>
-        <span>0</span>
+        <span id="p95Products">0</span>
       </div>
       <div>
         <span>Last released date</span>
@@ -67,4 +78,7 @@
     <section id="products"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
   </body>
+  <footer>
+    <h4>by Enard Lucas, Dumenil Léopold, El Atrache Oussama, Fay De Lestrac Thibault</h4>
+  </footer>
 </html>
