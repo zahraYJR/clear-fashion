@@ -168,8 +168,8 @@ const renderProducts = products => {
 			<tr>
 				<th>Picture</th>
 				<th>Name</th>
-				<th>Brand</th>
 				<th>Price</th>
+				<th>Brand</th>
 				<th>Release date</th>
 				<th>Favorite</th>
 			</tr>
@@ -184,8 +184,8 @@ const renderProducts = products => {
 		<tr>
 			<td><img src="${product.photo}" width="150"></td>
 			<td><a href="${product.link}" target="_blank">${product.name}</a></td>
-			<td>${product.brand}</td>
 			<td>${product.price}€</td>
+			<td>${product.brand}</td>
 			<td>${product.released}</td>
 			<td><input type="checkbox" id="check-${product.uuid}" ${fav}></td>
 		</tr>`;
