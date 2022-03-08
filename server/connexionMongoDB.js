@@ -2,21 +2,21 @@ const {MongoClient} = require('mongodb');
 const MONGODB_DB_NAME = 'clearfashion';
 const MONGODB_URI = "mongodb+srv://user:web_clear_fashion@clearfashion.biwwt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-
 async function connect() {
     try 
     {
+        console.log("In connect function");
         const client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
         const db = client.db(MONGODB_DB_NAME)
         console.log('Connected to database')
         return db
     }
-
     catch (err) 
     {
-        console.error(`Error connecting to the database. \n${err}`);
+        console.error(`Error connecting to the database.\n${err}`);
     }
 }
+
 connect();
 
 // 4. Insert the Products into this database
