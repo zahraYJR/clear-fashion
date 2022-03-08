@@ -181,9 +181,9 @@ console.log('Average price of the marketplace : ',AveragePrice,'euros.');
 //   'brand-name-n': [{...}, {...}, ..., {...}],
 // };
 
-const brands = {}
-BrandsName.forEach(element => {brands[element] = []});
-marketplace.forEach(element => {brands[element.brand].push(element)});
+// const brands = {}
+// BrandsName.forEach(element => {brands[element] = []});
+// marketplace.forEach(element => {brands[element.brand].push(element)});
 
 //
 
