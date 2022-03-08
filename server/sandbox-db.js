@@ -1,68 +1,47 @@
 /* eslint-disable no-console, no-process-exit */
-const dedicatedbrand = require('./sites/dedicatedbrand');
-const loom = require('./sites/loom');
+require('dotenv').config();
+const {MongoClient} = require('mongodb');
 const db = require('./db');
+const fs = require('fs');
 
 async function sandbox () {
   try {
-    let products = [];
-    let pages = [
-      'https://www.dedicatedbrand.com/en/men/basics',
-      'https://www.dedicatedbrand.com/en/men/sale'
-    ];
+    //const rawdata = fs.readFileSync('all_products.json');
+    //const products = JSON.parse(rawdata);
+    
+    //const result = await db.insert(products);
 
-    console.log(`🕵️‍♀️  browsing ${pages.length} pages with for...of`);
+    //console.log(`💽  ${result.insertedCount} inserted products`);
 
-    // Way 1 with for of: we scrape page by page
-    for (let page of pages) {
-      console.log(`🕵️‍♀️  scraping ${page}`);
+    console.log('\n');
 
-      let results = await dedicatedbrand.scrape(page);
+    console.log('💽  Find dedicated products only');
 
-      console.log(`👕 ${results.length} products found`);
+    const dedicatedOnly = await db.find({'brand': 'dedicated'});
 
-      products.push(results);
+    console.log(`👕 ${dedicatedOnly.length} total of products found for dedicated`);
+    //console.log(dedicatedOnly);
+
+    console.log('💽  Find products less than 50€');
+
+    const price = await db.find({'price': {$lt:50}});
+
+    console.log(`👕 ${price.length} total of products less than 50€`);
+    //console.log(price);
+
+    console.log('💽  Find products sorted by price');
+
+    let priceOrdered = [];
+    try {
+      const collection = await db.collection();
+      priceOrdered = await collection.find({}).sort({'price':1}).toArray();
+    } catch (error) {
+      console.error('🚨 collection.find...', error);
+      return null;
     }
 
-    pages = [
-      'https://www.loom.fr/collections/hauts',
-      'https://www.loom.fr/collections/bas'
-    ];
-
-    console.log('\n');
-
-    console.log(`🕵️‍♀️  browsing ${pages.length} pages with Promise.all`);
-
-    const promises = pages.map(page => loom.scrape(page));
-    const results = await Promise.all(promises);
-
-    console.log(`👕 ${results.length} results of promises found`);
-    console.log(`👕 ${results.flat().length} products found`);
-
-    console.log(results);
-    console.log(results.flat());
-
-    products.push(results.flat());
-    products = products.flat();
-
-    console.log('\n');
-
-    console.log(`👕 ${products.length} total of products found`);
-
-    console.log('\n');
-
-    const result = await db.insert(products);
-
-    console.log(`💽  ${result.insertedCount} inserted products`);
-
-    console.log('\n');
-
-    console.log('💽  Find Loom products only');
-
-    const loomOnly = await db.find({'brand': 'loom'});
-
-    console.log(`👕 ${loomOnly.length} total of products found for Loom`);
-    console.log(loomOnly);
+    console.log(`👕 ${priceOrdered.length} total of products`);
+    console.log(priceOrdered);
 
     db.close();
   } catch (e) {
