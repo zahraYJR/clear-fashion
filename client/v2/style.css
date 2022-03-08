@@ -6,5 +6,5 @@ table {
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 3px double rgb(212, 21, 21);
 }
