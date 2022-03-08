@@ -1,34 +1,37 @@
 /* eslint-disable no-console, no-process-exit */
-require('dotenv').config();
-const {MongoClient} = require('mongodb');
 const db = require('./db');
 const fs = require('fs');
 
 async function sandbox () {
   try {
-    //const rawdata = fs.readFileSync('all_products.json');
-    //const products = JSON.parse(rawdata);
-    
-    //const result = await db.insert(products);
+    //Has to be done once to fill the mongo db 
+    const raw = fs.readFileSync('all_products.json');
+    const products = JSON.parse(raw);
 
-    //console.log(`💽  ${result.insertedCount} inserted products`);
+    console.log(`💽 products insertion will follow :`);
+    
+    const result = await db.insert(products);
+
+    console.log(`💽  ${result.insertedCount} inserted products`);
 
     console.log('\n');
 
-    console.log('💽  Find dedicated products only');
+    console.log('💽  Find montlimart products only');
 
-    const dedicatedOnly = await db.find({'brand': 'dedicated'});
+    const montlimartOnly = await db.find({'brand': 'montlimart'});
 
-    console.log(`👕 ${dedicatedOnly.length} total of products found for dedicated`);
-    //console.log(dedicatedOnly);
+    console.log(`👕 ${montlimartOnly.length} total of products found for montlimart`);
+    console.log(montlimartOnly);
 
+    console.log('\n');
     console.log('💽  Find products less than 50€');
 
     const price = await db.find({'price': {$lt:50}});
 
     console.log(`👕 ${price.length} total of products less than 50€`);
-    //console.log(price);
+    console.log(price);
 
+    console.log('\n');
     console.log('💽  Find products sorted by price');
 
     let priceOrdered = [];
@@ -36,7 +39,7 @@ async function sandbox () {
       const collection = await db.collection();
       priceOrdered = await collection.find({}).sort({'price':1}).toArray();
     } catch (error) {
-      console.error('🚨 collection.find...', error);
+      console.error('🚨 find sort in sandbox db', error);
       return null;
     }
 
