@@ -83,3 +83,5 @@ module.exports.close = async () => {
     console.error('🚨 MongoClient.close...', error);
   }
 };
+
+getDB(MongoClient);
