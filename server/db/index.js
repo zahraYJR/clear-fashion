@@ -1,13 +1,13 @@
-require('dotenv').config();
+//require('dotenv').config();
 const {MongoClient} = require('mongodb');
 const fs = require('fs');
 
 const MONGODB_DB_NAME = 'clearfashion';
 const MONGODB_COLLECTION = 'products';
-const MONGODB_URI = 
+const MONGODB_URI = "mongodb+srv://admin:admin@cluster0.ffywv.mongodb.net/clearfashion?retryWrites=true&w=majority"
 
 let client = null;
-let database = null;
+let database =  null;
 
 /**
  * Get db connection
@@ -23,11 +23,11 @@ const getDB = module.exports.getDB = async () => {
     client = await MongoClient.connect(MONGODB_URI, {'useNewUrlParser': true});
     database = client.db(MONGODB_DB_NAME);
 
-    console.log('💽  Connected');
+    console.log('💽  Now Connected');
 
     return database;
   } catch (error) {
-    console.error('🚨 MongoClient.connect...', error);
+    console.error('🚨 Mongodb Client.connect', error);
     return null;
   }
 };
@@ -47,7 +47,7 @@ module.exports.insert = async products => {
 
     return result;
   } catch (error) {
-    console.error('🚨 collection.insertMany...', error);
+    console.error('🚨 insert from db', error);
     fs.writeFileSync('products.json', JSON.stringify(products));
     return {
       'insertedCount': error.result.nInserted
@@ -68,7 +68,7 @@ module.exports.find = async query => {
 
     return result;
   } catch (error) {
-    console.error('🚨 collection.find...', error);
+    console.error('🚨 find in db', error);
     return null;
   }
 };
@@ -80,7 +80,7 @@ module.exports.close = async () => {
   try {
     await client.close();
   } catch (error) {
-    console.error('🚨 MongoClient.close...', error);
+    console.error('🚨 Mongodb client.close', error);
   }
 };
 
