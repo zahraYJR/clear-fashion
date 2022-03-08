@@ -45,7 +45,7 @@ async function sandbox () {
           page++;
         }
       }
-      while /*(page < 2)*/(!done);
+      while (!done);
     }
 
     for (let i = 0; i<all_products.length; i++)
@@ -60,6 +60,7 @@ async function sandbox () {
     const jsonStr = JSON.stringify(all_products, null, 2);
 
     fs.writeFileSync('all_products.json', jsonStr);
+    console.log("All done, check all_products.json")
     
     process.exit(0);
   } catch (e) {
