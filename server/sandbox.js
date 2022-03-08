@@ -3,6 +3,7 @@ const dedicatedbrand = require('./sources/dedicatedbrand');
 const montlimart = require('./sources/Montlimart');
 const adresseParis = require('./sources/adresseParis');
 const fs = require('fs');
+const db = require('./db');
 const shop1='https://www.dedicatedbrand.com/en/men/all-men';
 const shop2='https://www.montlimart.com/toute-la-collection.html';
 const shop3='https://adresse.paris/630-toute-la-collection';
@@ -36,7 +37,8 @@ async function sandbox (eshop,web) {
       }
     }
     fs.writeFileSync('./sources/test.json', JSON.stringify(products,null,'\t'),'utf8',0o666,'as');
-    console.log(products);
+    const result = await db.insert(products);
+    const brand='montlimart';
     console.log('done');
     process.exit(0);
   } catch (e) {
@@ -47,4 +49,24 @@ async function sandbox (eshop,web) {
 
 const [,,eshop] = process.argv;
 
-sandbox(shop1,dedicatedbrand);
+sandbox(shop2,montlimart);
+
+const text='montlimart';
+async function findBrand(text){
+  const query={brand:text};
+  const products1 = await db.find(query);
+  console.log(products1);
+}
+//findBrand(text);
+
+async function findPrice(number){
+  const query={price:{$lt:number}};
+  const products2 = await db.find(query);
+  console.log(products2);
+}
+const price=40;
+findPrice(price);
+
+async function filterPrice(){
+  
+}
