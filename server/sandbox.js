@@ -1,4 +1,5 @@
 /* eslint-disable no-console, no-process-exit */
+const fs = require('fs');
 const { contains } = require('cheerio/lib/static');
 const dedicatedbrand = require('./sources/dedicatedbrand');
 const montlimardbrand = require('./sources/Montlimart');
@@ -8,29 +9,31 @@ globalThis.liste_products = [];
 async function sandbox (eshop, eshop2) {
   try {
     if(eshop == 'https://www.dedicatedbrand.com/en/men/all-men#page=10'){
-      let dedicated_products = [];
       console.log(`🕵️‍♀️  browsing ${eshop} source`);
-      let products = await dedicatedbrand.scrape(eshop);
-      dedicated_products = products; 
+      const dedicated_products = await dedicatedbrand.scrape(eshop);
       //console.log(dedicated_products);
       console.log('done');
       this.liste_products = dedicated_products;
       console.log('LISTE ',this.liste_products);
-
+      const Dedicated_json = JSON.stringify(dedicated_products);
+      fs.writeFileSync('./Dedicated_Products.json',Dedicated_json);
     }
     if(eshop2 == 'https://www.montlimart.com/toute-la-collection.html'){
-      let montlimart_products = [];
       console.log(`🕵️‍♀️  browsing ${eshop2} source`);
 
-      let products = await montlimardbrand.scrape(eshop2);
-      montlimart_products = products; 
+      const montlimart_products = await montlimardbrand.scrape(eshop2);
       console.log('done');
-      //console.log(montlimart_products);
+      console.log(montlimart_products);
       console.log('done');
-      this.liste_products.push(montlimart_products);
-      console.log('LISTE2 ',this.liste_products);
+      //this.liste_products.push(montlimart_products);
+      //console.log('LISTE2 ',this.liste_products);
+      console.log("HERE");
+      const Montlimart_json = JSON.stringify(montlimart_products);
+      fs.writeFileSync('./Montlimart_Products.json',Montlimart_json);
       process.exit(0);
-    }/*
+    }
+
+    /*
     else{
       let adresseparis_products = [];
       console.log(`🕵️‍♀️  browsing ${eshop} source`);
@@ -52,6 +55,7 @@ sandbox('https://www.dedicatedbrand.com/en/men/all-men#page=10','https://www.mon
 //sandbox('https://www.montlimart.com/toute-la-collection.html');
 //sandbox('https://adresse.paris/630-toute-la-collection');
 
+module.exports =  this.liste_products;
 // PB AVEC LES ID A REVOIR
 
 // lien de mongodb atlas

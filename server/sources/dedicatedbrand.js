@@ -14,6 +14,7 @@ const parse = data => {
       const link = `https://www.dedicatedbrand.com${$(element)
       .find('.productList-link')
       .attr('href')}`;
+      const brand = 'Dedicated';
       const name = $(element)
         .find('.productList-title')
         .text()
@@ -24,9 +25,10 @@ const parse = data => {
           .find('.productList-price')
           .text()
       );
-      const _id = uuidv5(link, uuidv5.URL)
-
-      return {_id,name, price};
+      const _id = uuidv5(link, uuidv5.URL);
+      //item = JSON.parse(`{"_id":"${_id}","brand":"Dedicated","name":"${name}","price":${price}}`);
+      //return item;
+      return {_id,brand,name, price};
     })
     .get();
 };
@@ -72,17 +74,22 @@ module.exports.scrape = async url => {
       let total_prod = nb_prod_total(body);
       //let meme = "";
       //Math.round(total_prod/40) +1
-      
+      /*
       for(let i=0;i<1;i++)
       {
         //console.log(url +`#page=${i}` );
         response = await fetch(url + `#page=${i}`);
         body = await response.text();
         let products = parse(body);
-        products_dedicated.push(products);
+        const items_json = JSON.stringify(products);
+        //products_dedicated.push(products);
         //console.log(i);
-      }
-      return products_dedicated;
+      }*/
+      response = await fetch(url);
+      body = await response.text();
+      let products = parse(body);
+      //const items_json = JSON.stringify(products);
+      return products;
     }
 
     console.error(response);

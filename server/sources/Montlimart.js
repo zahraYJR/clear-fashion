@@ -14,7 +14,7 @@ const parse = data => {
       const link = `https://www.montlimart.com${$(element)
       .find('.product-info .product-name')
       .attr('href')}`;
-
+      const brand = 'Montlimart';
       const name = $(element)
         .find('h2.product-name a')
         .text()
@@ -26,8 +26,11 @@ const parse = data => {
           .text()
       );
       const _id = uuidv5(link, uuidv5.URL)
+      //item = JSON.parse(`{"_id":"${_id}","brand":"Montlimart","name":"${name}","price":${price}}`);
+      //console.log("HEEERRR", item);
+      //return item;
         //console.log(name,price);
-      return {_id,name,price};
+      return {brand,name,price};
     })
     .get();
 };
@@ -41,8 +44,11 @@ module.exports.scrape = async url => {
   try {
     let response = await fetch(url);
     if (response.ok) {
+        console.log('response ok');
         let body = await response.text();
         let products = parse(body);
+        console.log('prooooooooooooo');
+        //const items_json = JSON.stringify(products);
       return products;
     }
     console.error(response);
