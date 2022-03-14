@@ -51,12 +51,12 @@ const [,,eshop] = process.argv;
 
 sandbox(shop2,montlimart);
 
-const text='montlimart';
 async function findBrand(text){
   const query={brand:text};
   const products1 = await db.find(query);
   console.log(products1);
 }
+const text='montlimart';
 //findBrand(text);
 
 async function findPrice(number){
@@ -65,8 +65,12 @@ async function findPrice(number){
   console.log(products2);
 }
 const price=40;
-findPrice(price);
+//findPrice(price);
 
 async function filterPrice(){
-  
+  const query={};
+  const sort={price:1};
+  const product3=await db.find(query,sort);
+  console.log(product3);
 }
+filterPrice();

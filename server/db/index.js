@@ -58,15 +58,20 @@ module.exports.insert = async products => {
 /**
  * Find products based on query
  * @param  {Array}  query
+ * @param  {Array}  sort
  * @return {Array}
  */
-module.exports.find = async query => {
+module.exports.find = async (query,sort={}) => {
   try {
     const db = await getDB();
     const collection = db.collection(MONGODB_COLLECTION);
-    const result = await collection.find(query).toArray();
-
-    return result;
+    if(sort=={}){
+      const result = await collection.find(query).toArray();
+      return result;
+    }else{
+      const result = await collection.find(query).sort(sort).toArray();
+      return result;
+    }
   } catch (error) {
     console.error('🚨 collection.find...', error);
     return null;
