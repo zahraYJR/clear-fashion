@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
+const {'v5': uuidv5} = require('uuid');
+
 /**
  * Parse webpage e-shop
  * @param  {String} data - html response
@@ -9,6 +11,9 @@ const parse = data => {
   const $ = cheerio.load(data);
   return $('.productList-container .productList')
     .map((i, element) => {
+      const link = `https://www.dedicatedbrand.com${$(element)
+      .find('.productList-link')
+      .attr('href')}`;
       const name = $(element)
         .find('.productList-title')
         .text()
@@ -19,8 +24,9 @@ const parse = data => {
           .find('.productList-price')
           .text()
       );
+      const _id = uuidv5(link, uuidv5.URL)
 
-      return {name, price};
+      return {_id,name, price};
     })
     .get();
 };

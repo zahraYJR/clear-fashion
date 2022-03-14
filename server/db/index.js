@@ -2,7 +2,7 @@ require('dotenv').config();
 const {MongoClient} = require('mongodb');
 const fs = require('fs');
 
-const MONGODB_DB_NAME = 'clearfashion';
+const MONGODB_DB_NAME = 'fashion-sample';
 const MONGODB_COLLECTION = 'products';
 const MONGODB_URI = process.env.MONGODB_URI;
 
