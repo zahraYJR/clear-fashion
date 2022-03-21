@@ -73,12 +73,11 @@ module.exports.insert = async () => {
  */
 module.exports.find = async (
   query,
-  sort = {}) =>{
+  sort = {}, limit = 141) =>{
   try {
     const db = await getDB();
     const collection = db.collection(MONGODB_COLLECTION);
-    const result = await collection.find(query).sort(sort).toArray();
-
+    const result = await collection.find(query).sort(sort).limit(limit).toArray();
     return result;
   } catch (error) {
     console.error('🚨 collection.find...', error);
