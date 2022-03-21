@@ -3,6 +3,7 @@ const {MongoClient} = require('mongodb');
 const fs = require('fs');
 var Dedicated_Products = require("./Dedicated_Products.json");
 var Montlimart_Products = require("./Montlimart_Products.json")
+var adresse_Products = require("./adresse_Products.json")
 
 const MONGODB_DB_NAME = 'fashion-sample';
 const MONGODB_COLLECTION = 'Liste_Products';
@@ -33,6 +34,19 @@ const getDB = module.exports.getDB = async () => {
   }
 };
 
+
+module.exports.removeProducts = async (query) => {
+  try {
+    const db = await getDB();
+    await collection.deleteMany(query);
+    console.log("Products Removed !");
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+
 /**
  * Insert list of products
  * @return {Object}
@@ -42,10 +56,12 @@ module.exports.insert = async () => {
     const collection = db.collection(MONGODB_COLLECTION);
     // More details
     // https://docs.mongodb.com/manual/reference/method/db.collection.insertMany/#insert-several-document-specifying-an-id-field
-    //const result = await collection.insertMany(Dedicated_Products);
+    let result = await collection.insertMany(Dedicated_Products);
     console.log("Products Dedicated insert successfully!");
     result = await collection.insertMany(Montlimart_Products);
     console.log("Products Montlimart insert successfully!");
+    result = await collection.insertMany(adresse_Products);
+    console.log("Products Adresse Paris insert successfully!");
 
     return result;
 };

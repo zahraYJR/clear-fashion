@@ -28,7 +28,7 @@ const parse = data => {
       const _id = uuidv5(link, uuidv5.URL);
       //item = JSON.parse(`{"_id":"${_id}","brand":"Dedicated","name":"${name}","price":${price}}`);
       //return item;
-      return {_id,brand,name, price};
+      return {brand,name, price};
     })
     .get();
 };

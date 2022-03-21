@@ -6,7 +6,7 @@ const montlimardbrand = require('./sources/Montlimart');
 const adresseparisbrand = require('./sources/AdresseParis');
 globalThis.liste_products = [];
 
-async function sandbox (eshop, eshop2) {
+async function sandbox (eshop, eshop2, eshop3) {
   try {
     if(eshop == 'https://www.dedicatedbrand.com/en/men/all-men#page=10'){
       console.log(`🕵️‍♀️  browsing ${eshop} source`);
@@ -27,12 +27,22 @@ async function sandbox (eshop, eshop2) {
       console.log('done');
       //this.liste_products.push(montlimart_products);
       //console.log('LISTE2 ',this.liste_products);
-      console.log("HERE");
       const Montlimart_json = JSON.stringify(montlimart_products);
       fs.writeFileSync('./Montlimart_Products.json',Montlimart_json);
+    }
+    if(eshop3 == 'https://adresse.paris/630-toute-la-collection')
+    {
+      console.log(`🕵️‍♀️  browsing ${eshop3} source`);
+
+      const adresse_products = await adresseparisbrand.scrape(eshop3);
+      console.log('done');
+      console.log(adresse_products);
+      console.log('done');
+      const Adresse_json = JSON.stringify(adresse_products);
+      fs.writeFileSync('./adresse_Products.json',Adresse_json);
+
       process.exit(0);
     }
-
     /*
     else{
       let adresseparis_products = [];
@@ -51,7 +61,7 @@ async function sandbox (eshop, eshop2) {
 }
 //const [,, eshop] = process.argv;
 
-sandbox('https://www.dedicatedbrand.com/en/men/all-men#page=10','https://www.montlimart.com/toute-la-collection.html');
+sandbox('https://www.dedicatedbrand.com/en/men/all-men#page=10','https://www.montlimart.com/toute-la-collection.html','https://adresse.paris/630-toute-la-collection');
 //sandbox('https://www.montlimart.com/toute-la-collection.html');
 //sandbox('https://adresse.paris/630-toute-la-collection');
 

@@ -2,7 +2,8 @@ const mongodb = require('./mongodb.js');
 
 async function sandbox () 
 {
-//const result = await mongodb.insert();
+//await mongodb.removeProducts({});
+let result = await mongodb.insert();
 
 console.log('💽  Find Montlimart products only');
 
