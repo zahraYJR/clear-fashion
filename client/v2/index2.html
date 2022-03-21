@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
+  </head>
+  <body>
+      <div class="header">
+      </div>
+      <h1>Clear fashion</h1>
+      <section id="options">
+          <div class="choix">
+            <h2>Options</h2>
+              <div class ="show" id="show">
+                  <label for="show-select">Show:</label>
+                  <select name="show" id="show-select">
+                      <option value="12">12</option>
+                      <option value="24">24</option>
+                      <option value="48">48</option>
+                  </select>
+              </div>
+              <br>
+
+              <div id="page">
+                  <label for="page-select">Go to page:</label>
+                  <select name="page" id="page-select"> </select>
+              </div>
+              <br>
+
+              <span><font size="+1"><strong>Filters :</strong></font></span>
+              <br>
+
+              <div id="filter-date">
+                  <label for="filter-date-select">By recent products :</label>
+                  <select name="filter-date" id="filter-date-select">
+                      <option value="no_filter">No</option>
+                      <option value="recent_product">Yes</option>
+                  </select>
+              </div>
+
+              <div id="filter-price">
+                  <label for="filter-price-select">By reasonable prices ('<'50€) :</label>
+                  <select name="filter-price" id="filter-price-select">
+                      <option value="no_filter">No</option>
+                      <option value="yes">Yes</option>
+                  </select>
+              </div>
+
+              <div id="filter-price-between-50-and-100">
+                <label for="filter-price-between-50-and-100-select">By prices between 50€ and 100€ :</label>
+                <select name="filter-price-between-50-and-100" id="filter-price-between-50-and-100-select">
+                    <option value="no_filter">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+              </div>
+        
+              <div id="filter-price-above-100">
+                <label for="filter-price-above-100-select">By prices above 100€ :</label>
+                <select name="filter-price-above-100" id="filter-price-above-100-select">
+                    <option value="no_filter">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+              </div>
+              <br>
+              
+
+              <div id="brand">
+                  <label for="brand-select">Brands :</label>
+                  <select name="brand" id="brand-select"> </select>
+              </div>
+              <br>
+
+              <div id="sort">
+                  <label for="sort-select"><font size="+1"><strong>Sort :</strong></font></label>
+                  <select name="sort" id="sort-select">
+                      <option value="no_sort">No Sorting</option>
+                      <option value="price-asc">Cheaper</option>
+                      <option value="price-desc">Expensive</option>
+                      <option value="date-asc">Recently released</option>
+                      <option value="date-desc">Anciently released</option>
+                  </select>
+              </div>
+          </div>
+          <br>
+
+          <div>
+            <label for="filter-favorite-select">Show only favorites :</label>
+            <select name="filter-favorite" id="filter-favorite-select">
+                <option value="no_filter">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+
+        <div>
+            <button style = "display:inline-block;
+                padding:0.3em 1em;
+                margin:1em 1em 0.5em 0em;
+                font-weight:300;
+                font-size: 15px;
+                color: white;
+                background-color: rgb(143, 140, 135);
+                text-align:center;
+                transition: all 0.2s;"
+                onclick= ResetOptions()>Reset options</button>
+        </div>
+
+
+
+      </section>
+      <br>
+
+
+      <section id="indicators">
+          <h2>Indicators</h2>
+          <div>
+              <span>Number of products :</span>
+              <span id="nbProducts">0</span>
+          </div>
+          <div>
+              <span>Number of new products :</span>
+              <span id="nbNewProducts">0</span>
+          </div>
+          <div>
+              <span>p50 price value :</span>
+              <span id="p50">0</span>
+          </div>
+          <div>
+              <span>p90 price value :</span>
+              <span id="p90">0</span>
+          </div>
+          <div>
+              <span>p95 price value :</span>
+              <span id="p95">0</span>
+          </div>
+          <div>
+              <span>Last released date :</span>
+              <span id="lastReleased">2020-01-01</span>
+          </div>
+      </section>
+      <br>
+
+      <section id="products"></section>
+      <script type="text/javascript" charset="UTF-8" src="portfolio2.js"></script>
+  </body>
+</html>
