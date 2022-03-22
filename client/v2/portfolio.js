@@ -5,8 +5,6 @@
 let currentProducts = [];
 let currentPagination = {};
 
-//let liste_favoris = [{"link":"https://www.loom.fr/collections/tous-les-vetements/products/le-hoodie","brand":"loom","price":90,"name":"Le hoodie","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_hoodie_durable_bleu_face_394x.jpg?v=1591698418","uuid":"084a85ed-bb99-5cb8-9170-d032480455bf","released":"2021-03-16"},{"link":"https://coteleparis.com/collections/tous-les-produits-cotele/products/la-baseball-cap-camel","brand":"coteleparis","price":45,"name":"BASEBALL CAP - CAMEL","photo":"//cdn.shopify.com/s/files/1/0479/7798/8261/products/IMG_5111_600x.jpg?v=1606912077","uuid":"5b036585-36f1-56a3-b87c-7660082045d4","released":"2021-12-21"},{"link":"https://www.loom.fr/collections/tous-les-vetements/products/la-chemise-vichy","brand":"loom","price":50,"name":"La chemise vichy","photo":"//cdn.shopify.com/s/files/1/1355/7899/products/loom_chemise_vichy_coton_rouge_face_1_394x.jpg?v=1605263024","uuid":"8a469325-fbac-50ec-9e0c-d26e1ee79c00","released":"2021-10-19"}]
-
 globalThis.liste_favoris = [];
 // inititiqte selectors
 const selectShow = document.querySelector('#show-select');
@@ -14,15 +12,18 @@ const selectPage = document.querySelector('#page-select');
 const selectBrand = document.querySelector('#brand-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
-const spancountRecentlyReleased = document.querySelector('#count-recently-released');
-const Price_under50 = document.querySelector('#price-less50');
-const Recently_released = document.querySelector('#recently-released');
+//const spancountRecentlyReleased = document.querySelector('#count-recently-released');
+//const Price_under50 = document.querySelector('#price-less50');
+//const Recently_released = document.querySelector('#recently-released');
 const spanp50 =document.querySelector('#p50');
 const spanp90 =document.querySelector('#p90');
 const spanp95 =document.querySelector('#p95');
 const selectSort = document.querySelector('#sort-select');
 const spanlast = document.querySelector('#last');
 const favoris = document.querySelector('#favori');
+const selectPrice = document.querySelector('#prix-select');
+const selectlimite = document.querySelector('#limite-select');
+
 // Let's go mega
 
 /**
@@ -42,19 +43,25 @@ const setCurrentProducts = ({result, meta}) => {
  * @param  {String}  [brand=""] - brand to filter
  * @return {Object}
  */
-const fetchProducts = async (page = 1, size = 12, brand = "", less50 = "No", recent = "No", sorted = "No") => {
+const fetchProducts = async (page = 1, size = 12, brand = "", sorted = "No", price ="1000",limit="") => {
   try {
     const response = await fetch(
-      `https://server-ashy.vercel.app?page=${page}&size=${size}&brand=${brand}`
+      `https://server-iota-gold.vercel.app/Liste_Products/search?page=${page}&size=${size}&brand=${brand}&price=${price}&limit=${limit}`
       //`https://clear-fashion-api.vercel.app?page=${page}&size=${size}&brand=${brand}`
     );
-    const body = await response.json();
-
-    if (body.success !== true) {
+    let body = await response.json();
+    if (body.length == 0) {
       console.error(body);
       return {currentProducts, currentPagination};
     }
-    console.log(body.data);
+    let meta = {"CurrentPage":page,"count":body.length,"pageCount":size*page,"pageSize":size, "Brand":brand,"Price":price,"Limit":limit, "Sorted":sorted};
+    //var shuffle_body = shuffle(body);
+    //let result = await reduceProducts(body,size,page);
+    let result = body;
+    let res = {result,meta};
+    body = res;
+    console.log('reeess',body);
+    /*
     if(less50 != "No")
     {
       return price_less_than_50(body);
@@ -62,29 +69,29 @@ const fetchProducts = async (page = 1, size = 12, brand = "", less50 = "No", rec
     if(recent != "No")
     {
       return recent_products_30(body);
-    }
+    }*/
     if(sorted != "No")
     {
       if(sorted == 'price-asc')
       {
-        body.data.result  = SortAsc(body.data.result);
+        body.result  = SortAsc(body.result);
       }
       else if(sorted == 'price-desc')
       {
-        body.data.result  = SortDesc(body.data.result);
+        body.result  = SortDesc(body.result);
       }
       else if(sorted == 'date-asc')
       {
-        body.data.result  = SortDateAsc(body.data.result);
+        body.result  = SortDateAsc(body.result);
       }
       else
       {
-        body.data.result  = SortDateDesc(body.data.result);
+        body.result  = SortDateDesc(body.result);
       }
 
-      return body.data;
+      return body;
     }
-    return body.data;
+    return body;
   } catch (error) {
     console.error(error);
     return {currentProducts, currentPagination};
@@ -94,57 +101,55 @@ const fetchProducts = async (page = 1, size = 12, brand = "", less50 = "No", rec
 const price_less_than_50 = (body) =>
 {
   let listeprod = [];
-  for(let i =0; i<body.data.result.length;i++)
+  for(let i =0; i<body.result.length;i++)
   {
-    if(body.data.result[i].price<=50)
+    if(body.result[i].price<=50)
     {
-      listeprod.push(body.data.result[i]);
+      listeprod.push(body.result[i]);
     }
   }
-  body.data.result = listeprod;
-  return body.data;
+  body.result = listeprod;
+  return body;
 }
 
 const recent_products_30 = (body) =>
 {
   var today = new Date();
   let listeprod = [];
-  for(let i =0; i<body.data.result.length;i++)
+  for(let i =0; i<body.result.length;i++)
   {
-    var date_produit = new Date(body.data.result[i].released);
+    var date_produit = new Date(body.result[i].released);
     var nbjours = Math.floor((today-date_produit)/(1000*60*60*24));
     if(nbjours<=30)
     {
-      listeprod.push(body.data.result[i]);
+      listeprod.push(body.result[i]);
     }
   }
-  body.data.result = listeprod;
-  return body.data;
+  body.result = listeprod;
+  return body;
 }
 
 const products_sorted = (body) =>
 {
   var today = new Date();
   let listeprod = [];
-  for(let i =0; i<body.data.result.length;i++)
+  for(let i =0; i<body.result.length;i++)
   {
-    var date_produit = new Date(body.data.result[i].released);
+    var date_produit = new Date(body.result[i].released);
     var nbjours = Math.floor((today-date_produit)/(1000*60*60*24));
     if(nbjours<=30)
     {
-      listeprod.push(body.data.result[i]);
+      listeprod.push(body.result[i]);
     }
   }
-  body.data.result = listeprod;
-  return body.data;
+  body.result = listeprod;
+  return body;
 }
 
 /**
  * Render list of products
  * @param  {Array} products
  */
- // <button onclick="add_fav({"link" : "${product.link}","brand":"${product.brand}","price":"${product.price}","name":"${product.name}","uuid":"${product.uuid}","released":"${product.released}"})">Favori</button>
-
 
 const renderProducts = products => {
   const fragment = document.createDocumentFragment();
@@ -152,12 +157,11 @@ const renderProducts = products => {
   const template = products
     .map(product => {
       return `
-      <div class="product" id=${product.uuid}>*
-        <button onclick="add_fav('${product.link}','${product.brand}','${product.price}','${product.name}','${product.uuid}', '${product.released}')">Favori</button>
-        <span>${product.brand}</span>
-        <a href="${product.link}">${product.name}</a>
-        <span>${product.price}</span>
-        <span>${product.released}</span>
+      <div class="product" id=${product._id}>*
+        <button onclick="add_fav('${product.brand}','${product.price}','${product.name}','${product._id}')">Favori</button>
+        <span style="color :blue; ">${product.brand}</span>
+        <a>${product.name}</a>
+        <span style="color :red; ">${product.price}</span>
       </div>
     `;
     })
@@ -232,7 +236,6 @@ const renderp95 = products => {
 
 const renderlast = products => {
   let date_trie = SortDateDesc(products);
-  console.log(date_trie);
   spanlast.innerHTML = date_trie[0].released;
 }
 
@@ -240,11 +243,11 @@ const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
   renderIndicators(pagination);
-  renderNewProducts(products);
+  //renderNewProducts(products);
   renderp50(products);
   renderp90(products);
   renderp95(products);
-  renderlast(products);
+  //renderlast(products);
 };
 
 const SortAsc = (liste_a_trier) =>
@@ -279,11 +282,10 @@ const SortDateDesc = (liste_a_trier) =>
 
 // {"link" : "${product.link}","brand":"${product.brand}","price":"${product.price}","name":"${product.name}","uuid":"${product.uuid}","released":"${product.released}"})">Favori</button>
 
-const add_fav = (link,brand,price,name,uuid,released) =>
+const add_fav = (brand,price,name,id) =>
 {
-  globalThis.liste_favoris.push({"link" : link,"brand":brand,"price":price,"name":name,"uuid":uuid,"released":released});
+  globalThis.liste_favoris.push({"brand":brand,"price":price,"name":name,"id":id});
   console.log(liste_favoris);
-  console.log('non');
 };
 /**
  * Select the number of products to display
@@ -302,21 +304,9 @@ selectPage.addEventListener('change', event => {
 });
 
 selectBrand.addEventListener('change', event => {
-  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, event.target.value)
+  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, event.target.value, currentPagination.Sorted,currentPagination.Price,currentPagination.Limit)
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination));
-});
-
-Price_under50.addEventListener('change', event => {
-  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.brand, event.target.value)
-  .then(setCurrentProducts)  
-  .then(() => render(currentProducts, currentPagination));
-});
-
-Recently_released.addEventListener('change', event => {
-  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.brand, "No", event.target.value)
-  .then(setCurrentProducts)  
-  .then(() => render(currentProducts, currentPagination));
 });
 
 document.addEventListener('DOMContentLoaded', () =>
@@ -326,10 +316,25 @@ document.addEventListener('DOMContentLoaded', () =>
 );
 
 selectSort.addEventListener('change', event => {
-  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, "", "No", "No", event.target.value)
+  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.Brand, event.target.value, currentPagination.Price,currentPagination.Limit)
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination));
 });
+
+
+selectPrice.addEventListener('change', event => {
+  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.Brand, currentPagination.Sorted,event.target.value, currentPagination.Limit)
+    .then(setCurrentProducts)
+    .then(() => render(currentProducts, currentPagination));
+});
+
+selectlimite.addEventListener('change', event => {
+  fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.Brand, currentPagination.Sorted,currentPagination.Price, event.target.value)
+    .then(setCurrentProducts)
+    .then(() => render(currentProducts, currentPagination));
+});
+
+//(page = 1, size = 12, brand = "", sorted = "No", price ="1000",limit="") => {
 
 
 favoris.addEventListener('change', event => {
@@ -338,7 +343,7 @@ favoris.addEventListener('change', event => {
     render(liste_favoris, currentPagination);
   }
   else{
-    fetchProducts(currentPagination.currentPage, currentPagination.pageSize)
+    fetchProducts(currentPagination.currentPage, currentPagination.pageSize, currentPagination.Brand, currentPagination.Sorted,currentPagination.Price, currentPagination.Limit)
     .then(setCurrentProducts)
     .then(() => render(currentProducts, currentPagination));
   }
