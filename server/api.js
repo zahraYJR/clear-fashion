@@ -39,6 +39,8 @@ app.get(`/Liste_Products/search`, async (request, response) => {
         console.log(`price:${prix}`);
         const query_brand = { brand: marque, price: { $lte: prix }};
         result = await mongodb.find(query_brand, sort = {},limit = limite);
+        //result = await mongodb.find(query_brand).skip((request.query.page-1)*limite).limit(limite);
+
     }
     else if(!request.query.limit && !request.query.price)
     {

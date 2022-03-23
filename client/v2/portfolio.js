@@ -158,8 +158,8 @@ const renderProducts = products => {
     .map(product => {
       return `
       <div class="product" id=${product._id}>*
-        <button onclick="add_fav('${product.brand}','${product.price}','${product.name}','${product._id}')">Favori</button>
-        <span style="color :blue; ">${product.brand}</span>
+        <input type="checkbox" onclick="add_fav('${product.brand}','${product.price}','${product.name}','${product._id}')">Favori</button>
+        <span style="color :blue; ">| ${product.brand} |</span>
         <a>${product.name}</a>
         <span style="color :red; ">${product.price}</span>
       </div>
