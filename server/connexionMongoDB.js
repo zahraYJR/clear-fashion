@@ -1,6 +1,6 @@
 const {MongoClient} = require('mongodb');
 const MONGODB_DB_NAME = 'clearfashion';
-const MONGODB_URI = "mongodb+srv://user:web_clear_fashion@clearfashion.biwwt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const MONGODB_URI = "mongodb+srv://admin:mongoDB2@clearfashion.biwwt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 async function connect() {
     try 
