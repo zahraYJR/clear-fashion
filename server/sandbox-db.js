@@ -1,68 +1,50 @@
 /* eslint-disable no-console, no-process-exit */
-const dedicatedbrand = require('./sites/dedicatedbrand');
-const loom = require('./sites/loom');
 const db = require('./db');
+const fs = require('fs');
 
 async function sandbox () {
   try {
-    let products = [];
-    let pages = [
-      'https://www.dedicatedbrand.com/en/men/basics',
-      'https://www.dedicatedbrand.com/en/men/sale'
-    ];
+    //Has to be done once to fill the mongo db 
+    const raw = fs.readFileSync('all_products.json');
+    const products = JSON.parse(raw);
 
-    console.log(`🕵️‍♀️  browsing ${pages.length} pages with for...of`);
-
-    // Way 1 with for of: we scrape page by page
-    for (let page of pages) {
-      console.log(`🕵️‍♀️  scraping ${page}`);
-
-      let results = await dedicatedbrand.scrape(page);
-
-      console.log(`👕 ${results.length} products found`);
-
-      products.push(results);
-    }
-
-    pages = [
-      'https://www.loom.fr/collections/hauts',
-      'https://www.loom.fr/collections/bas'
-    ];
-
-    console.log('\n');
-
-    console.log(`🕵️‍♀️  browsing ${pages.length} pages with Promise.all`);
-
-    const promises = pages.map(page => loom.scrape(page));
-    const results = await Promise.all(promises);
-
-    console.log(`👕 ${results.length} results of promises found`);
-    console.log(`👕 ${results.flat().length} products found`);
-
-    console.log(results);
-    console.log(results.flat());
-
-    products.push(results.flat());
-    products = products.flat();
-
-    console.log('\n');
-
-    console.log(`👕 ${products.length} total of products found`);
-
-    console.log('\n');
-
+    console.log(`💽 products insertion will follow :`);
+    
     const result = await db.insert(products);
 
     console.log(`💽  ${result.insertedCount} inserted products`);
 
     console.log('\n');
 
-    console.log('💽  Find Loom products only');
+    console.log('💽  Find montlimart products only');
 
-    const loomOnly = await db.find({'brand': 'loom'});
+    const montlimartOnly = await db.find({'brand': 'montlimart'});
 
-    console.log(`👕 ${loomOnly.length} total of products found for Loom`);
-    console.log(loomOnly);
+    console.log(`👕 ${montlimartOnly.length} total of products found for montlimart`);
+    console.log(montlimartOnly);
+
+    console.log('\n');
+    console.log('💽  Find products less than 50€');
+
+    const price = await db.find({'price': {$lt:50}});
+
+    console.log(`👕 ${price.length} total of products less than 50€`);
+    console.log(price);
+
+    console.log('\n');
+    console.log('💽  Find products sorted by price');
+
+    let priceOrdered = [];
+    try {
+      const collection = await db.collection();
+      priceOrdered = await collection.find({}).sort({'price':1}).toArray();
+    } catch (error) {
+      console.error('🚨 find sort in sandbox db', error);
+      return null;
+    }
+
+    console.log(`👕 ${priceOrdered.length} total of products`);
+    console.log(priceOrdered);
 
     db.close();
   } catch (e) {
