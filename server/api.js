@@ -4,9 +4,7 @@ const helmet = require('helmet');
 const db = require('./db');
 const { ObjectId } = require('mongodb');
 
-
 const PORT = 8092;
-
 
 const app = express();
 
