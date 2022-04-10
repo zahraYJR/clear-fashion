@@ -624,8 +624,8 @@ function ResetOptions()
 {
     selectFilterRecentProducts.value = "no_filter";
     selectFilterReasonablePrice.value = "no_filter";
-    selectFilterPriceBetween50_100.value = "no_filter";
-    selectFilterPriceAbove100.value = "no_filter";
+    //selectFilterPriceBetween50_100.value = "no_filter";
+    //selectFilterPriceAbove100.value = "no_filter";
     selectBrand.value = "All";
     selectSort.value = "no_sort";  
     selectFilterFavorite.value = "no_filter";
