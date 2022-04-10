@@ -623,13 +623,10 @@ const refresh = () => {
 // Supprimer toutes les options sélectionnées
 function ResetOptions()
 {
-    /*
     selectFilterRecentProducts.innerHTML = "No";
     selectFilterReasonablePrice.innerHTML = "No";
     selectFilterPriceBetween50_100.innerHTML = "No";
     selectFilterPriceAbove100.innerHTML = "No";
     selectBrand.innerHTML = "All";
     selectSort.innerHTML = "No Sorting";
-    refresh();
-    */
 }
