@@ -404,7 +404,7 @@ function FilterByReasonablePrice(currentProducts, instruction) {
 }
 
 
-/*
+
 // Filter by prices between 50€ and 100€
 selectFilterPriceBetween50_100.addEventListener('change', event => {
     fetchProducts(currentPagination.currentPage, currentPagination.pageSize)
@@ -412,6 +412,28 @@ selectFilterPriceBetween50_100.addEventListener('change', event => {
         .then(() => render(FilterByPriceBetween50_100(currentProducts, event.target.value), currentPagination));
   })
   
+function FilterByPriceBetween50_100(currentProducts, instruction) 
+{
+    var filtered_products = []
+    if (instruction == "no_filter") 
+    {
+        filtered_products = [...currentProducts]
+    }
+    else 
+    {
+        for (var product of currentProducts) 
+        {
+            //console.log(product.price);
+            if ((product.price > 50) && (product.price <= 100)) 
+            {
+                filtered_products.push(product)
+            }
+        }
+    }
+return filtered_products
+}
+ 
+
   function FilterByPriceBetween50_100(currentProducts, instruction) 
   {
     var filtered_products = []
@@ -434,8 +456,6 @@ selectFilterPriceBetween50_100.addEventListener('change', event => {
     return filtered_products
   }
   
-  
-  // Filter by prices above 100€
   selectFilterPriceAbove100.addEventListener('change', event => {
     fetchProducts(currentPagination.currentPage, currentPagination.pageSize)
         .then(setCurrentProducts)
@@ -460,10 +480,11 @@ selectFilterPriceBetween50_100.addEventListener('change', event => {
         }
       }
     }
-  
+
     return filtered_products
   }
-*/
+
+
 
 
 
@@ -621,7 +642,6 @@ const refresh = () => {
 // Supprimer toutes les options sélectionnées
 function ResetOptions()
 {
-
     selectFilterRecentProducts.value = "no_filter";
     selectFilterReasonablePrice.value = "no_filter";
     selectFilterPriceBetween50_100.value = "no_filter";
