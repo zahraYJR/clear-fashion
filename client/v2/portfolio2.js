@@ -66,7 +66,7 @@ const fetchProducts = async (page = 1, size = 12) => {
       return {currentProducts, currentPagination};
     }
 
-    return body.data.result[0];
+    return body.data;
   } 
 
   catch (error) 
