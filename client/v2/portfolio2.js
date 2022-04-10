@@ -283,10 +283,6 @@ const render = (products, pagination) => {
     renderIndicators(pagination);
 };
 
-
-
-
-
 /**
  * Declaration of all Listeners
  */
