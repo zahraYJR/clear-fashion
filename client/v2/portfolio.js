@@ -411,27 +411,7 @@ selectFilterPriceBetween50_100.addEventListener('change', event => {
         .then(setCurrentProducts)
         .then(() => render(FilterByPriceBetween50_100(currentProducts, event.target.value), currentPagination));
   })
-  
-function FilterByPriceBetween50_100(currentProducts, instruction) 
-{
-    var filtered_products = []
-    if (instruction == "no_filter") 
-    {
-        filtered_products = [...currentProducts]
-    }
-    else 
-    {
-        for (var product of currentProducts) 
-        {
-            //console.log(product.price);
-            if ((product.price > 50) && (product.price <= 100)) 
-            {
-                filtered_products.push(product)
-            }
-        }
-    }
-return filtered_products
-}
+
  
 
   function FilterByPriceBetween50_100(currentProducts, instruction) 
